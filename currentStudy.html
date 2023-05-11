@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>스터디 현황</title>
+    
+</head>
+<body>
+<div>
+    <h2>스터디 현황</h2>
+    <div id="map"></div>
+</div>
+
+<link rel="stylesheet" href="currentStudy.css">
+
+
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e5546ce50e2833e4db42b281b4b23109"></script>
+<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+    mapOption = { 
+        center: new kakao.maps.LatLng(37.32191219571723, 127.12659496708484), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
+
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+ 
+// 마커를 표시할 좌표 및 스터디 카페 배열입니다 
+var positions = [
+    {
+        title: '가온스터디카페 단국대점', 
+        latlng: new kakao.maps.LatLng(37.3242453135971, 127.12499957742214)
+    },
+    {
+        title: '올라스터디카페 죽전단국대점', 
+        latlng: new kakao.maps.LatLng(37.32401743807667, 127.12319963646706)
+    },
+    {
+        title: '스터디카페 열린공간', 
+        latlng: new kakao.maps.LatLng(37.325846926739615, 127.11840179027612)
+    },
+    {
+        title: '그루스터디카페 수지죽전센터',
+        latlng: new kakao.maps.LatLng(37.32623895413185, 127.11832342535088)
+    },
+    {
+        title: '뚝심스터디카페',
+        latlng: new kakao.maps.LatLng(37.32853768810886, 127.11491950165352)
+    },
+    {
+        title: '화이트펜슬스터디카페 용인죽전점',
+        latlng: new kakao.maps.LatLng(37.32616968721167, 127.11314166670587)
+    },
+    {
+        title: '혼공스터디카페 죽전점',
+        latlng: new kakao.maps.LatLng(37.327224138468424, 127.11288655925219)
+    },
+];
+
+// 마커 이미지의 이미지 주소입니다
+//var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+
+var content = '<div class ="label"><span class="left"></span><span class="center">3</span><span class="right"></span></div>';
+
+for (var i = 0; i < positions.length; i ++) {
+    
+    // 마커 이미지의 이미지 크기 입니다
+    var imageSize = new kakao.maps.Size(34, 50); 
+    
+    // 마커 이미지를 생성합니다    
+    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+    
+    // 마커를 생성합니다
+    var marker = new kakao.maps.Marker({
+        map: map, // 마커를 표시할 지도
+        position: positions[i].latlng, // 마커를 표시할 위치
+        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+        image : markerImage // 마커 이미지 
+    });
+}
+
+/*
+var content = '<div class ="label"><span class="left"></span><span class="center">카카오!</span><span class="right"></span></div>';
+
+// 커스텀 오버레이가 표시될 위치입니다 
+var position = new kakao.maps.LatLng(37.327224138468424, 127.11288655925219);  
+
+// 커스텀 오버레이를 생성합니다
+var customOverlay = new kakao.maps.CustomOverlay({
+    position: position,
+    content: content   
+});
+
+// 커스텀 오버레이를 지도에 표시합니다
+customOverlay.setMap(map);*/
+</script>
+</body>
+</html>

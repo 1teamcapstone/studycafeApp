@@ -1,0 +1,26 @@
+#map {
+    width: 60%;
+    height: 800px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+h2 { text-align: center; }
+body{ background-color: #D9D1C7;}
+/*.label {margin-bottom: 96px;}
+.label * {display: inline-block;vertical-align: top;}
+.label .left {background: url("https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_l.png") no-repeat;display: inline-block;height: 24px;overflow: hidden;vertical-align: top;width: 7px;}
+.label .center {background: url(https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_bg.png) repeat-x;display: inline-block;height: 24px;font-size: 12px;line-height: 24px;}
+.label .right {background: url("https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_r.png") -1px 0  no-repeat;display: inline-block;height: 24px;overflow: hidden;width: 6px;}
+*/
+
+.label {margin-bottom: 55px;}
+.label * {display: inline-block;vertical-align: top;}
+.label .d1 {background: url(https://blogfiles.pstatic.net/MjAxOTAzMjhfMTYy/MDAxNTUzNzM4MDkyNTI5.nK4eTOQi0JZZcqfayBLHOMuugF-y8ZWmB-A_WV9qw44g.MRWgcXJ0uwexFfQ2LvJz-vx_-h85HGN8ZM9sS-Jy97Ag.PNG/marker_c.png);
+  text-align:center; margin-left:0px; padding:0px 6px; font-size: 15px; font-weight: bold; line-height: 22px;}
+.label .d2 {background: url(https://blogfiles.pstatic.net/MjAxOTAzMjhfMTYy/MDAxNTUzNzM4MDkyNTI5.nK4eTOQi0JZZcqfayBLHOMuugF-y8ZWmB-A_WV9qw44g.MRWgcXJ0uwexFfQ2LvJz-vx_-h85HGN8ZM9sS-Jy97Ag.PNG/marker_c.png);
+  text-align:center; margin-left:0px; padding:0px 4px; font-size: 13px; font-weight: bold; line-height: 22px;}
+.label .d3 {background: url(https://blogfiles.pstatic.net/MjAxOTAzMjhfMTYy/MDAxNTUzNzM4MDkyNTI5.nK4eTOQi0JZZcqfayBLHOMuugF-y8ZWmB-A_WV9qw44g.MRWgcXJ0uwexFfQ2LvJz-vx_-h85HGN8ZM9sS-Jy97Ag.PNG/marker_c.png);
+  text-align:center; margin-left:0px; padding:0px 2px; font-size:10px; font-weight: bold; line-height: 22px;}
+.label .d4 {background: url(https://blogfiles.pstatic.net/MjAxOTAzMjhfMTYy/MDAxNTUzNzM4MDkyNTI5.nK4eTOQi0JZZcqfayBLHOMuugF-y8ZWmB-A_WV9qw44g.MRWgcXJ0uwexFfQ2LvJz-vx_-h85HGN8ZM9sS-Jy97Ag.PNG/marker_c.png);
+  text-align:center; margin-left:0px; padding:0px 0px; font-size: 10px; line-height: 22px;}
