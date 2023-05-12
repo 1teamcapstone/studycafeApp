@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block contents %}
+
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Main Screen</title>
+    <link rel="stylesheet" href="static/index.css">
+  </head>
+  <body>
+    <div class="row mt-5">
+        {% if request.session.user %}
+        <div class="col-6 text-center">
+            <button class="btn btn-primary btn-block text-center" onclick="location.href='/accounts/logout/'">로그아웃</button>
+        </div>
+        {% else %}
+        <div class="col-6">
+            <button class="btn btn-primary btn-block text-center" onclick="location.href='/accounts/login/'">로그인</button>
+        </div>
+        <div class="col-6">
+            <button class="btn btn-primary btn-block text-center" onclick="location.href='/accounts/register/'">회원가입</button>
+        </div>
+        {% endif %}
+    </div>
+    <header>
+      <button id="menu-button"><img src="static/menu-icon.png"></button>
+      <div class="menu-container">
+        <button class="close-button">×</button>
+      </div>
+      <input type="text" id="search-input" placeholder="검색어를 입력하세요." />
+      <button id="search-button"><img src="static/search-icon.png"></button>
+    </header>
+    <main style="display: block; text-align: center;">
+      <img id="map" src="static/map-placeholder.jpg" alt="지도" />
+      <div>내 위치에서 가까운 스터디카페</div>
+    </main>
+    <script src="static/index.js"></script>
+    <footer>
+      <div class="footer-menu">
+        <button><img src="static/location-icon.png"></button>
+        <button><img src="static/gps-icon.png"></button>
+        <button><img src="static/home-icon.png"></button>
+        <button><img src="static/heart-icon.png"></button>
+        <button><img src="static/person-icon.png"></button>
+      </div>
+    </footer>
+  </body>
+</html>
+{% endblock %}
