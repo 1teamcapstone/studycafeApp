@@ -5,7 +5,7 @@ from django.contrib.auth.hashers import make_password, check_password
 from .forms import LoginForm
 
 def home(request):
-    return render(request,'home.html')
+    return render(request,'index.html')
 
 def register(request):
     if request.method == 'GET':
