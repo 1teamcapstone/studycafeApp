@@ -25,3 +25,5 @@ class LoginForm(forms.Form):
                 self.user_id = user.id
                 
      
+# class LocationForm(forms.Form):
+#     location = forms.CharField

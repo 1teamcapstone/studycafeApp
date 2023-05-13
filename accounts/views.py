@@ -7,6 +7,7 @@ from .forms import LoginForm
 def home(request):
     return render(request,'index.html')
 
+
 def register(request):
     if request.method == 'GET':
         return render(request, 'register.html')
@@ -41,13 +42,40 @@ def login(request):
             request.session['user'] = form.user_id
             return redirect('/')
 
-        
+    
         
     else:
         form = LoginForm()
     return render(request, 'login.html', {'form': form})
 
+
 def logout(request):
     if request.session.get('user'):
         del(request.session['user'])
     return redirect('/')
+
+
+def location(request):
+    if request.method == 'GET':
+        return render(request, 'write.html')
+    
+    elif request.method == 'POST':
+            location = request.POST.get('location', None)
+            err_data={}
+            if not(location):
+                err_data['error'] = '주소를 입력해주세요.'
+            else:
+                user = User(
+                        location=location,            
+                    )
+                user.save()
+                return redirect('/')
+            return render(request, 'write.html',  err_data)
+            
+
+
+
+def location_register(request):
+    if request.method == 'POST':
+        request.session['user'] = location
+        return redirect('/')
