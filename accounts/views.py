@@ -17,6 +17,7 @@ def register(request):
         useremail = request.POST.get('useremail', None) 
         password = request.POST.get('password', None)
         re_password = request.POST.get('re_password', None)
+        # location = request.POST.get('location', null='True')
         
         err_data={}
         if not(username and useremail and password and re_password):
@@ -55,27 +56,10 @@ def logout(request):
     return redirect('/')
 
 
-def location(request):
-    if request.method == 'GET':
-        return render(request, 'write.html')
-    
-    elif request.method == 'POST':
-            location = request.POST.get('location', None)
-            err_data={}
-            if not(location):
-                err_data['error'] = '주소를 입력해주세요.'
-            else:
-                user = User(
-                        location=location,            
-                    )
-                user.save()
-                return redirect('/')
-            return render(request, 'write.html',  err_data)
-            
 
 
 
-def location_register(request):
-    if request.method == 'POST':
-        request.session['user'] = location
-        return redirect('/')
+# def location_register(request):
+#     if request.method == 'POST':
+#         request.session['user'] = location
+#         return redirect('/')

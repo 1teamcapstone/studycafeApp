@@ -9,10 +9,4 @@ class Migration(migrations.Migration):
         ("accounts", "0001_initial"),
     ]
 
-    operations = [
-        migrations.AlterField(
-            model_name="user",
-            name="location",
-            field=models.CharField(default="", max_length=128),
-        ),
-    ]
+

@@ -17,13 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from accounts import views
+# from userlocation import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('accounts/', include('accounts.urls')),
-    path('', views.home),
-    path("write/", views.location),
-
+    path('', views.home), ## 홈화면 주소들은 따로 html끼리모으고..연동시키기
+    path('userlocation/', include('userlocation.urls')),
+ 
 
 
 

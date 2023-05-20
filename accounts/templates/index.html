@@ -13,6 +13,9 @@
         <div class="col-6 text-center">
             <button class="btn btn-primary btn-block text-center" onclick="location.href='/accounts/logout/'">로그아웃</button>
         </div>
+        <div class="col-6">
+          <button class="btn btn-primary btn-block text-center" onclick="location.href='/userlocation/write/'">위치등록</button>
+      </div>
         {% else %}
         <div class="col-6">
             <button class="btn btn-primary btn-block text-center" onclick="location.href='/accounts/login/'">로그인</button>
@@ -20,9 +23,7 @@
         <div class="col-6">
             <button class="btn btn-primary btn-block text-center" onclick="location.href='/accounts/register/'">회원가입</button>
         </div>
-        <div class="col-6">
-          <button class="btn btn-primary btn-block text-center" onclick="location.href='/accounts/write/'">위치등록</button>
-      </div>
+
         {% endif %}
     </div>
     <header>
@@ -37,7 +38,6 @@
       <img id="map" src="static/map-placeholder.jpg" alt="지도" />
       <div>내 위치에서 가까운 스터디카페</div>
     </main>
-    <script src="static/index.js"></script>
     <footer>
       <div class="footer-menu">
         <button><img src="static/location-icon.png"></button>
