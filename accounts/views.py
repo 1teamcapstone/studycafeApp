@@ -7,6 +7,9 @@ from .forms import LoginForm
 def home(request):
     return render(request,'index.html')
 
+def mypage(request):
+    return render(request,'mypage.html')
+
 
 def register(request):
     if request.method == 'GET':
@@ -17,7 +20,7 @@ def register(request):
         useremail = request.POST.get('useremail', None) 
         password = request.POST.get('password', None)
         re_password = request.POST.get('re_password', None)
-        # location = request.POST.get('location', null='True')
+  
         
         err_data={}
         if not(username and useremail and password and re_password):
@@ -54,6 +57,8 @@ def logout(request):
     if request.session.get('user'):
         del(request.session['user'])
     return redirect('/')
+
+
 
 
 

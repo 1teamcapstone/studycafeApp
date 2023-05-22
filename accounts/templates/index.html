@@ -15,7 +15,8 @@
         </div>
         <div class="col-6">
           <button class="btn btn-primary btn-block text-center" onclick="location.href='/userlocation/write/'">위치등록</button>
-      </div>
+        </div>
+      
         {% else %}
         <div class="col-6">
             <button class="btn btn-primary btn-block text-center" onclick="location.href='/accounts/login/'">로그인</button>
@@ -44,7 +45,7 @@
         <button><img src="static/gps-icon.png"></button>
         <button><img src="static/home-icon.png"></button>
         <button><img src="static/heart-icon.png"></button>
-        <button><img src="static/person-icon.png"></button>
+        <button><img src="static/person-icon.png" onclick="location.href='/accounts/mypage/'"></button>
       </div>
     </footer>
   </body>

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block contents %}
+
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mypage</title>
+    <link rel="stylesheet" href="static/index.css">
+  </head>
+  <body>
+    <h3>마이페이지</h3>
+    {% if request.session.user %}
+    <div class="col-6 text-center">
+        <h4>{{ user.username }}님 안녕하세요!</h4>
+        <button><i class="fa fa-commenting-o" aria-hidden="true"></i>리뷰</button>
+    </div>
+    {% endif %}
+  
+   
+
+</html>
+{% endblock %}
