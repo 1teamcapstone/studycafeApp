@@ -3,12 +3,15 @@ from .models import User
 from django.http import HttpResponse
 from django.contrib.auth.hashers import make_password, check_password
 from .forms import LoginForm
+from . import models
 
 def home(request):
     return render(request,'index.html')
 
 def mypage(request):
-    return render(request,'mypage.html')
+    user = models.User.objects.all()
+    print(user)
+    return render(request,'mypage.html', {'user': user})
 
 
 def register(request):

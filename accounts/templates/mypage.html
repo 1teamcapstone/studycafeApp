@@ -9,10 +9,15 @@
   </head>
   <body>
     <h3>마이페이지</h3>
+
     {% if request.session.user %}
+      {% for u in User %}
+      <h5> {{ u.username }} </h5>
+      {% endfor %}
     <div class="col-6 text-center">
-        <h4>{{ user.username }}님 안녕하세요!</h4>
+        
         <button><i class="fa fa-commenting-o" aria-hidden="true"></i>리뷰</button>
+        <button><i class="fa fa-users" aria-hidden="true">참여 스터디</i></button>
     </div>
     {% endif %}
   
