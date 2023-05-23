@@ -1,9 +1,10 @@
 from django.db import models
 
+
 class UserLocation(models.Model):
 
     location = models.CharField(max_length=128)
- 
+
 
 
     class Meta:

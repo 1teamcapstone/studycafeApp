@@ -24,9 +24,10 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('', views.home), ## 홈화면 주소들은 따로 html끼리모으고..연동시키기
     path('userlocation/', include('userlocation.urls')),
+    path('board/', include('board.urls')),
  
 
-
+ 
 
     
 ]
