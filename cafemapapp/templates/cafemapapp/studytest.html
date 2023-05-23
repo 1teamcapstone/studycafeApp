@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>스터디 현황</title>
+        <link rel="stylesheet" href='/static/css/studycafeMap.css'>
+
+    </head>
+    <body>
+        <h2>스터디 현황</h2>
+        <div id="map"></div>
+
+        <button onclick="location.href='http://127.0.0.1:8000/test'">내 주변 스터디카페</button >
+        <style>
+            button {
+                position: absolute;
+                top: 10%;
+                left: 71%;
+            }
+        </style>
+
+        <script
+            type="text/javascript"
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e5546ce50e2833e4db42b281b4b23109&libraries=services"></script>
+        <script>
+            var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+                mapOption = {
+                    center: new kakao
+                        .maps
+                        .LatLng(37.32191219571723, 127.12659496708484), // 지도의 중심좌표
+                    level: 3 // 지도의 확대 레벨
+                };
+
+            // 지도를 생성합니다
+            var map = new kakao
+                .maps
+                .Map(mapContainer, mapOption);
+
+            // 주소-좌표 변환 객체를 생성합니다
+            var geocoder = new kakao
+                .maps
+                .services
+                .Geocoder();
+
+            // 마커를 표시할 좌표 및 스터디 카페 배열입니다
+            var positions = [
+                {
+                    title: '가온스터디카페 단국대점',
+                    address: '경기 용인시 수지구 죽전로168번길 20 성지프라자 7층',
+                    study: '3'
+                }, {
+                    title: '올라스터디카페 죽전단국대점',
+                    address: '경기 용인시 수지구 죽전로 141 우미이노스빌 상가동 2층 201호',
+                    study: '5'
+                },
+                /*{
+                    title: '스터디카페 열린공간',
+                    latlng: new kakao
+                        .maps
+                        .LatLng(37.325846926739615, 127.11840179027612),
+                    study: '2'
+                }, */
+                {
+                    title: '그루스터디카페 수지죽전센터',
+                    address: '경기 용인시 수지구 푸른솔로 87 5층',
+                    study: '0'
+                }, {
+                    title: '뚝심스터디카페',
+                    address: '경기 용인시 수지구 대지로 58 가동 3층 305호',
+                    study: '1'
+                }
+            ];
+
+            positions.forEach(function (position) { //추가한 코드
+                // 주소로 좌표를 검색합니다
+                geocoder.addressSearch(position.address, function (result, status) {
+
+                    // 정상적으로 검색이 완료됐으면
+                    if (status === kakao.maps.services.Status.OK) {
+
+                        var coords = new kakao
+                            .maps
+                            .LatLng(result[0].y, result[0].x);
+
+                        // 지도에 표시할 원을 생성
+                        var circle = new kakao
+                            .maps
+                            .Circle({
+                                center: coords, // 원의 중심좌표 입니다
+                                radius: 20, // 미터 단위의 원의 반지름입니다
+                                strokeWeight: 5, // 선의 두께입니다
+                                strokeColor: '#734A32', // 선의 색깔입니다
+                                strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                                strokeStyle: 'double', // 선의 스타일 입니다
+                                fillColor: '#D9AE79', // 채우기 색깔입니다
+                                fillOpacity: 0.9 // 채우기 불투명도 입니다
+                            });
+
+                        // 지도에 원을 표시합니다
+                        circle.setMap(map);
+
+                        // 커스텀 오버레이를 생성합니다
+                        var customOverlay = new kakao
+                            .maps
+                            .CustomOverlay(
+                                {map: map, position: coords, content: position.study, yAnchor: 0.6}
+                            );
+
+                        // 커스텀 오버레이를 지도에 표시합니다
+                        customOverlay.setMap(map);
+                       
+/*
+                        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+                        map.setCenter(coords);*/
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

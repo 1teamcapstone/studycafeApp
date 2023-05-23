@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from accounts import views
 # from userlocation import views
+import cafemapapp.views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -25,9 +26,10 @@ urlpatterns = [
     path('', views.home), ## 홈화면 주소들은 따로 html끼리모으고..연동시키기
     path('userlocation/', include('userlocation.urls')),
     path('board/', include('board.urls')),
+    path('map/',cafemapapp.views.map, name='map'),
+    path('study/',cafemapapp.views.study, name='study'),
+    path('test/',cafemapapp.views.test, name='test'),
  
-
- 
-
     
+    path('test_back/', include('cafemapapp.urls')),
 ]

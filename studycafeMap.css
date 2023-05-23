@@ -1,9 +1,0 @@
-#map {
-    width: 60%;
-    height: 800px;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
-h2 { text-align: center; }
-body{ background-color: #D9D1C7;}

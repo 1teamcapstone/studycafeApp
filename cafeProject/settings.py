@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'accounts',
     'userlocation',
     'board',
-    
+    'cafemapapp',
+    'rest_framework',
 
 ]
 
@@ -78,10 +79,23 @@ WSGI_APPLICATION = "cafeProject.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+##db라우터
+DATABASE_ROUTERS = [
+    'cafemapapp.dbrouter.MultiDBRouter',
+]
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
+    },
+    'referencedb1': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'studycafe',
+        'USER': 'root',
+        'PASSWORD': '0000',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
