@@ -1,6 +1,6 @@
 class MultiDBRouter(object):
     def __init__(self):
-        self.model_list = ['default', 'referencedb1']
+        self.model_list = ['default', 'mysql']
 
     def db_for_read(self, model, **hints):
         if model._meta.app_label in self.model_list:

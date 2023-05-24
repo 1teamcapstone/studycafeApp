@@ -77,6 +77,30 @@ class AuthUserUserPermissions(models.Model):
         unique_together = (('user', 'permission'),)
 
 
+class CafeprojectUser(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    username = models.CharField(max_length=128)
+    useremail = models.CharField(max_length=128)
+    password = models.CharField(max_length=128)
+    created_at = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'cafeproject_user'
+
+
+class CommunityBoard(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    title = models.CharField(max_length=64)
+    contents = models.TextField()
+    registered_date = models.DateTimeField()
+    writer = models.ForeignKey(CafeprojectUser, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'community_board'
+
+
 class DjangoAdminLog(models.Model):
     action_time = models.DateTimeField()
     object_id = models.TextField(blank=True, null=True)
@@ -131,6 +155,15 @@ class Studycafes(models.Model):
     phone_number = models.CharField(max_length=50, blank=True, null=True)
 
     class Meta:
-        managed = False        
-        app_label='mysql'
+        managed = False
+        app_label='referencedb1'
         db_table = 'studycafes'
+
+
+class UserLocation(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    location = models.CharField(max_length=128)
+
+    class Meta:
+        managed = False
+        db_table = 'user_location'

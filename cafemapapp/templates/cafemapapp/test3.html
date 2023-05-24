@@ -47,34 +47,6 @@
                 .Geocoder();
           
 
-            // 마커를 표시할 좌표 및 스터디 카페 배열입니다
-            var positions = [
-                {
-                    title: '가온스터디카페 단국대점',
-                    address: '경기 용인시 수지구 죽전로168번길 20 성지프라자 7층',
-                    study: '3'
-                }, {
-                    title: '올라스터디카페 죽전단국대점',
-                    address: '경기 용인시 수지구 죽전로 141 우미이노스빌 상가동 2층 201호',
-                    study: '5'
-                },
-                /*{
-                    title: '스터디카페 열린공간',
-                    latlng: new kakao
-                        .maps
-                        .LatLng(37.325846926739615, 127.11840179027612),
-                    study: '2'
-                }, */
-                {
-                    title: '그루스터디카페 수지죽전센터',
-                    address: '경기 용인시 수지구 푸른솔로 87 5층',
-                    study: '0'
-                }, {
-                    title: '뚝심스터디카페',
-                    address: '경기 용인시 수지구 대지로 58 가동 3층 305호',
-                    study: '1'
-                }
-            ];
             var scaaddress=new Array();
             {% for studycafe in studycafe %}
                 scaaddress.push('{{studycafe.address}}');

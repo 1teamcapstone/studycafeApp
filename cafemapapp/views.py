@@ -6,11 +6,11 @@ from .models import Studycafes  #추가
 from django.core.paginator import Paginator
 
 
-# @api_view(['GET'])
-# def getTestDatas(request):
-#     datas = Studycafes.objects.all()
-#     serializer = TestDataSerializer(datas, many=True)
-#     return Response(serializer.data)
+#@api_view(['GET'])
+#def getTestDatas(request):
+#    datas = Studycafes.objects.all()
+#    serializer = TestDataSerializer(datas, many=True)
+#    return Response(serializer.data)
 
 def test_view(request):
     blogs=Studycafes.objects
@@ -44,5 +44,5 @@ def study(request):
 def test(request):
     return render(request, 'cafemapapp/test3.html')
 
-# def sca(request):
-#     return render(request, 'cafemapapp/scadatatest.html')
+def sca(request):
+    return render(request, 'cafemapapp/scadatatest.html')
