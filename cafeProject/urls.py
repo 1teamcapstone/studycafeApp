@@ -19,6 +19,7 @@ from django.urls import path, include
 from accounts import views
 # from userlocation import views
 import cafemapapp.views
+import scainfoapp.views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -30,8 +31,8 @@ urlpatterns = [
     path('study/',cafemapapp.views.study, name='study'),
     path('test/',cafemapapp.views.studycafe_view, name='studycafe_view'),
     path('sca/',include('cafemapapp.urls')),
-    path('aa/',include('cafemapapp.urls')),
+    path('aa/',include('scainfoapp.urls')),
  
     
-    path('test_back/', include('cafemapapp.urls')),
+    #path('test_back/', include('cafemapapp.urls')),
 ]

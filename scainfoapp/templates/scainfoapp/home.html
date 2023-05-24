@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,
+    initial-scale=1.0">
+        <title>스터디카페 목록</title>
+        <link rel="stylesheet" href='/static/css/home.css'>
+        <style>
+            .star-ratings {
+                color: #aaa9a9; 
+                position: relative;
+                unicode-bidi: bidi-override;
+                width: max-content;
+                -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+                -webkit-text-stroke-width: 1.3px;
+                -webkit-text-stroke-color: #2b2a29;
+            }            
+            .star-ratings-fill {
+                color: #fff58c;
+                padding: 0;
+                position: absolute;
+                z-index: 1;
+                display: flex;
+                top: 0;
+                left: 0;
+                overflow: hidden;
+            }
+            
+            .star-ratings-base {
+                z-index: 0;
+                padding: 0;
+            }
+        </style>
+
+    </head>
+    <body>
+        <h2>스터디카페 목록</h2>
+
+        <div class="container">
+            {% for blog in posts %}
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{blog.name}}
+                            <h5>
+                                <p>{{blog.address}}</p>
+                                <p>별점 : {{blog.star_rating}}</p>
+
+                                {%load mathfilters%}
+                                <div class="star-ratings">
+                                    
+                                    <div class="star-ratings-fill" style="width:{{blog.star_rating|mul:20}}%">
+                                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                    </div>
+                                    <div class="star-ratings-base">
+                                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                    </div>
+                                </div>
+
+                                <p>리뷰 :
+                                    {{blog.review}}</p>
+                                <p>영업시간 :
+                                    {{blog.time}}</p>
+                                <p>전화번호 :
+                                    {{blog.phone_number}}</p>
+                            </div>
+                        </div>
+                        {%endfor%}
+
+                        {% if posts.has_previous %}
+                            <a href="?page=1">맨 앞</a>
+                            <a href="?page={{posts.previous_page_number}}">이전</a>
+                        {% endif %}
+                        <span>{{posts.number}}</span>
+                        <span>/</span>
+                        <span>{{posts.paginator.num_pages}}</span>
+                        {% if posts.has_next %}
+                            <a href="?page={{posts.next_page_number}}">다음</a>
+                            <a href="?page={{posts.paginator.num_pages}}">맨 뒤</a>
+                        {% endif %}
+                    </div>
+
+                </body>
+            </html>

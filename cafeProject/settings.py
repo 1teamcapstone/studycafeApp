@@ -37,11 +37,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'mathfilters',
     'accounts',
     'userlocation',
     'board',
     'cafemapapp',
-    'rest_framework',
+    #'rest_framework',
+    'scainfoapp',
 
 ]
 
@@ -82,6 +84,7 @@ WSGI_APPLICATION = "cafeProject.wsgi.application"
 ##db라우터
 DATABASE_ROUTERS = [
     'cafemapapp.dbrouter.MultiDBRouter',
+    # 'scainfoapp.dbrouter.MultiDBRouter',
 ]
 
 DATABASES = {
