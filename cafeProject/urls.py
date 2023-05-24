@@ -30,6 +30,7 @@ urlpatterns = [
     path('study/',cafemapapp.views.study, name='study'),
     path('test/',cafemapapp.views.studycafe_view, name='studycafe_view'),
     path('sca/',include('cafemapapp.urls')),
+    path('aa/',include('cafemapapp.urls')),
  
     
     path('test_back/', include('cafemapapp.urls')),

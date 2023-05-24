@@ -8,18 +8,6 @@
     <title>Document</title>
 </head>
 <body>
-    <script type="text/javascript">
-        var scaaddress=new Array();
-        {% for studycafe in studycafe %}
-            scaaddress.push('{{studycafe.address}}');
-        {%endfor%}    
-        for (var i = 0; i < scaaddress.length; i++) {
-            document.write(scaaddress[i]+"<br>");
-        }
-        
-
-    </script>
-
     <table class="table-contents" style="padding:10px">
         <tr>
             <th>번호</th>
@@ -43,7 +31,18 @@
             {%endfor%}
         
 
-    </table>                
+    </table>
+    {% for studycafe in studycafe %}
+            <tr>
+                <td>{{studycafe.id}}</td>
+                <td>{{studycafe.name}}</td>
+                <td>{{studycafe.address}}</td>
+                <td>{{studycafe.star_rating}}</td>
+                <td>{{studycafe.review}}</td>
+                <td>{{studycafe.time}}</td>
+                <td>{{studycafe.phone_number}}</td>
+            </tr>
+            {%endfor%}                
             
 
 </body>
