@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '3.34.49.180',
     'ec2-3-34-49-180.ap-northeast-2.compute.amazonaws.com',
-    '127.0.0.1:8000',
+    '127.0.0.1',
                  ]
 
 
@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'userlocation',
     'board',
     'cafemapapp',
-    #'rest_framework',
+    'rest_framework',
     'scainfoapp',
 
 ]
