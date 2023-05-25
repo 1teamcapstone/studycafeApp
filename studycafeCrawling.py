@@ -37,15 +37,19 @@ def parse():
         # print("상 호 명: " + name.text)
         category = place.find_element(By.CLASS_NAME, "subcategory")
         # print("카테고리: " + category.text)
+        address = place.find_element(By.CSS_SELECTOR, "div.info_item > div.addr > p")
+        # print("주    소: " + addr.text)
+        rating = place.find_element(By.CSS_SELECTOR, "div.rating > span.score > em")
+        # print("별점: " + rating.text)
         reviews = place.find_element(By.CSS_SELECTOR, "div.rating > a.review > em")
         # print("리뷰개수: " + reviews.text)
-        addr = place.find_element(By.CSS_SELECTOR, "div.info_item > div.addr > p")
-        # print("주    소: " + addr.text)
+        time = place.find_element(By.CSS_SELECTOR, "div.openhour > p.periodWarp > a")
+        # print("운영시간: " + time.text)
         phone = place.find_element(By.CSS_SELECTOR, "div.info_item > div.contact > span.phone")
         # print("전화번호: " + phone.text)
         count += 1
         # CSV 작성   
-        wr.writerow([count, name.text, category.text, reviews.text, addr.text, phone.text]) 
+        wr.writerow([count, name.text, category.text, address.text, rating.text, reviews.text, time.text, phone.text]) 
     f.close()
 
 max_cnt = driver.find_element(By.ID, "info.search.place.cnt").text
