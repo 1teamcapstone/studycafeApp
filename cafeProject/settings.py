@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'cafemapapp',
     'rest_framework',
     'scainfoapp',
+    'area',
+    'main',
 
 ]
 
