@@ -9,7 +9,7 @@
     </head>
     <body>
         <h2 style="text-align: center;">스터디카페 목록</h2>
-        <div style="text-align: center;">
+        <div class="tag" align="left">
         <form method='post' action='{% url 'hashtag' %}'>
             {% csrf_token %}
             <input type="text" name="search_button" placeholder="관련 해시태그 검색 (ex) #노트북존" style="width:300px; background-color: rgb(242, 242, 242)" onfocus="this.placeholder=''" onblur="this.placeholder='관련 해시태그 검색'">
