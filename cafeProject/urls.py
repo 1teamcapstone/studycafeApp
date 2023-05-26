@@ -20,6 +20,8 @@ from accounts import views
 # from userlocation import views
 import cafemapapp.views
 import scainfoapp.views
+import area.views
+import main.views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -32,6 +34,8 @@ urlpatterns = [
     path('scamap/',cafemapapp.views.studycafe_view, name='studycafe_view'),
     #path('sca/',include('cafemapapp.urls')),
     path('scainfo/',include('scainfoapp.urls')),
+    path('area/', area.views.area, name='area'),    
+    path('main/', main.views.main, name='main'),
  
     
     path('test_back/', include('cafemapapp.urls')),
