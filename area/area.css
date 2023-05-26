@@ -1,0 +1,149 @@
+a {
+    text-decoration: none !important;
+    font-family: 'Montserrat', sans-serif !important;
+  }
+  
+  .minimalist-vertical-menu {
+    border-top: 0;
+    margin: 0 20px 20px;
+    display: inline-flex;
+    overflow-x: hidden;
+  }
+  
+  .minimalist-tab-menu {
+    padding-right: 0;
+    padding-left: 0;
+    padding-bottom: 0;
+    width: 270px;
+    border-right: 1px solid #cecece;
+    border-top: 0;
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    z-index: 1000;
+    background-color: white;
+  }
+  
+  .minimalist-tab-menu .list-group {
+    margin-bottom: 0;
+  }
+  
+  .minimalist-tab-menu .list-group > li {
+    height: 48px;
+    margin-bottom: 0;
+    border-left: 0;
+    border-top: 0;
+    border-bottom: 0;
+    padding: 0 20px;
+    text-align: left;
+    color: #454a4e;
+    background: transparent;
+    display: block;
+    line-height: 48px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+  }
+
+  /* 
+  .minimalist-tab-menu .list-group > li > i {
+    color: #f36920;
+    max-width: 100%;
+    max-height: 19px;
+    margin-right: 15px;
+    margin-top: -2px;
+  }
+  */
+  
+  .minimalist-tab-menu .list-group li.active { /* 활성화된 메뉴 */
+    background-color: #324028;
+    background-image: #324028;
+    color: #ffffff;
+  }
+  
+  .minimalist-tab-menu .list-group > .has-child:after {
+    content: " \f054";
+    padding-left: 1em;
+    font-family: "FontAwesome";
+    font-size: 12px;
+    color: #cecece;
+    float: right;
+  }
+  
+  .minimalist-tab {
+    position: relative;
+    background: none;
+    width: 1030px;
+  }
+  
+  .minimalist-tab-content {
+    background-color: transparent;
+    padding: 0 25px;
+    padding-right: 0;
+    height: 384px;
+    display: inline-block;
+    border: 1px solid #cecece;
+    border-radius: 10px;
+    border-left: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: -200px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .minimalist-tab-content.active {
+    display: block;
+    left: 0;
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .dropdown-item {
+    display: block;
+    font-weight: 400;
+    color: #212529;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    transition: 0.3s;
+    margin: 0px 10px 15px 0px;
+    clear: none;
+    float: left;
+    width: 234px;
+    line-height: 16px;
+    text-align: left;
+    white-space: initial;
+    text-transform: capitalize;
+  }
+  
+  .dropdown-item a {
+    padding: 5px 8px 5px 60px;
+    color: #253847;
+    font-size: 0.9em;
+    font-weight: 400;
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 38px;
+  }
+
+  .dropdown-item a img {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 15px;
+  }
+  
+  .menu-dropdown {
+    padding: 25px 0;
+    float: left;
+    height: 100%;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(6, 1fr);
+  }
