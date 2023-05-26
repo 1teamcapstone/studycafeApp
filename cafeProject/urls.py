@@ -27,12 +27,12 @@ urlpatterns = [
     path('', views.home), ## 홈화면 주소들은 따로 html끼리모으고..연동시키기
     path('userlocation/', include('userlocation.urls')),
     path('board/', include('board.urls')),
-    path('map/',cafemapapp.views.map, name='map'),
+    #path('map/',cafemapapp.views.map, name='map'),
     path('study/',cafemapapp.views.study, name='study'),
-    path('test/',cafemapapp.views.studycafe_view, name='studycafe_view'),
-    path('sca/',include('cafemapapp.urls')),
-    path('aa/',include('scainfoapp.urls')),
+    path('scamap/',cafemapapp.views.studycafe_view, name='studycafe_view'),
+    #path('sca/',include('cafemapapp.urls')),
+    path('scainfo/',include('scainfoapp.urls')),
  
     
-    #path('test_back/', include('cafemapapp.urls')),
+    path('test_back/', include('cafemapapp.urls')),
 ]

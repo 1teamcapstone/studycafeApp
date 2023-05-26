@@ -1,5 +1,9 @@
-.card{
-    border: 1px solid #734A32;
+h2 { text-align: center; }
+
+
+div.card{
+  width: 500px;
+  border: 2px solid #734A32;
 }
 
 .star-ratings {

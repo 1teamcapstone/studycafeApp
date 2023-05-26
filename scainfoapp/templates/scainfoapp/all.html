@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,
+    initial-scale=1.0">
+        <title>스터디카페 목록</title>
+        <link rel="stylesheet" href='/static/css/home.css'>
+    </head>
+    <body>
+        <h2 style="text-align: center;">스터디카페 목록</h2>
+        <div style="text-align: center;">
+        <form method='post' action='{% url 'hashtag' %}'>
+            {% csrf_token %}
+            <input type="text" name="search_button" placeholder="관련 해시태그 검색 (ex) #노트북존" style="width:300px; background-color: rgb(242, 242, 242)" onfocus="this.placeholder=''" onblur="this.placeholder='관련 해시태그 검색'">
+            <button class="btn btn-primary" type="submit">검색</button>
+        </form>
+        <p></p>
+    </div>
+
+        <div class="container">
+            {% for sca in posts %}
+                <div class="card" style="width: 700px; border: 2px solid #734A32; margin: auto;">
+                    <div class="card-body">
+                        {% comment %} <p>{{sca.id}}</p> {% endcomment %}
+                        <h4 class="card-title">{{sca.name}}</h4>
+                        <p>{{sca.address}}</p>
+                        <p>별점 :
+                            {{sca.star_rating}}</p>
+
+                        {%load mathfilters%}
+                        <div class="star-ratings">
+
+                            <div class="star-ratings-fill" style="width:{{sca.star_rating|mul:20}}%">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                            </div>
+                            <div class="star-ratings-base">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                            </div>
+                        </div>
+
+                        <p>리뷰 :
+                            {{sca.review}}</p>
+                        <p>영업시간 :
+                            {{sca.time}}</p>
+                        <p>전화번호 :
+                            {{sca.phone_number}}</p>
+
+                        {% for hashtag in hashtags %}
+                            {%if sca.id is hashtag.sca_id%}
+
+                                <span>#{{hashtag.name}}</span>
+
+                            {%endif%}
+                        {%endfor%}
+                    </div>
+                    <p></p>
+                </div>
+                <br></br>
+            {%endfor%}
+            <p></p>
+                        <div style="text-align: center;">
+                        
+                        {% if posts.has_previous %}
+                            <a href="?page=1">맨 앞</a>
+                            <a href="?page={{posts.previous_page_number}}">이전</a>
+                        {% endif %}
+                        <span>{{posts.number}}</span>
+                        <span>/</span>
+                        <span>{{posts.paginator.num_pages}}</span>
+                        {% if posts.has_next %}
+                            <a href="?page={{posts.next_page_number}}">다음</a>
+                            <a href="?page={{posts.paginator.num_pages}}">맨 뒤</a>
+                        {% endif %}
+                        </div>
+                    </div>
+                    <p></p>
+                </body>
+            </html>
