@@ -7,19 +7,28 @@ select{
 }
 
 .sort {
-  width: 700px;
+  width: 650px;
   margin: auto;
 }
 
 .tag{
-  width: 700px;
+  width: 650px;
   margin: auto;
 }
 
 .card{
-  width: 700px;
-  border: 2px solid #734A32;
+  background-color: #D9D1C7;
+  width: 650px;
+  height: auto;
+  border: 5px solid #734A32;
   margin: auto;
+}
+
+.card-body{
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
 .star-ratings {
