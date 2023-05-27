@@ -6,7 +6,7 @@ from .forms import LoginForm
 from . import models
 
 def home(request):
-    return render(request,'index.html')
+    return render(request,'main.html')
 
 def mypage(request):
     user = models.User.objects.all()
