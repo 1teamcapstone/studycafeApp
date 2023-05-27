@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'scainfoapp',
     'area',
-    'main',
+
 
 ]
 

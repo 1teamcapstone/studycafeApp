@@ -1,17 +1,28 @@
+{% extends "base.html" %}
+{% block contents %}
+
+<html lang="ko">
 <head>
     <title>SCA CONNECT</title>
-    <link href="/static/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="static/main.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <header id="header">
         <a href="main.html" class="logo">SCA CONNECT</a>
         <ul>
+            {% if request.session.user %}
             <li><a href="#" class="active">주변</a></li>
             <li><a href="#">지역</a></li>
             <li><a href="#">찜</a></li>
-            <li><a href="#">마이</a></li>
-            <li><a href="#">로그인</a></li>
-            <li><a href="#">회원가입</a></li>
+            <li><a href="#" onclick="location.href='/accounts/mypage/'">마이</a></li>
+            <li><a href="#" onclick="location.href='/accounts/logout/'">로그아웃</a></li>
+            <li><a href="#" onclick="location.href='/userlocation/write/'">위치등록</a></li>
+            <li><a href="#" onclick="location.href='/board/list/'">커뮤니티</a></li>
+            {% else %}
+           
+            <li><a href="#" onclick="location.href='/accounts/login/'">로그인</a></li>
+            <li><a href="#" onclick="location.href='/accounts/register/'">회원가입</a></li>
+            {% endif %}
         </ul>
     </header>
     
@@ -59,3 +70,5 @@
     </script>
     
 </body>
+</html>
+{% endblock %}
