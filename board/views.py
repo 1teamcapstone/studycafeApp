@@ -47,7 +47,7 @@ def board_detail(request, pk):
 def comment_create_ajax(request):
     comment= Comment()
     comment.body =request.POST.get('body')
-    comment.board = get_object_or_404(Board, pk=request.POST.get('board_id'))
+    comment.post = get_object_or_404(Comment, pk=request.POST.get('board_id'))
     comment.save()
     
     ret = {

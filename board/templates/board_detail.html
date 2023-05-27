@@ -15,25 +15,26 @@
     </div>
         
 </div>
-<h3> comment </h3>
+
+<h3> 댓글목록 </h3>
 <div id="comment_list">
     {% for comment in board.comment_set.all %}
         <p>{{ comment.body }}</p>
     {% endfor %}
 </div>
+
     <input type="text" id="comment" name="content" placeholder="댓글입력">
-    <button onclick="make_comment({{ board.id }})" type="submit">작성</button>
+    <button onclick="make_comment({{ board_id }})" type="submit" class = "btn btn-primary">작성</button>
+    
 <br><br>
 
-
-
 <script>
-    function make_comment(board_id){
+    window.onload=function make_comment(board_id){
         $.ajax({
             type: "POST",
-            url: "/commment/create",
+            url: "/comment/create",
             data: {
-                'board_id' : board_id,
+                'board_id' : board_id
                 'body' : body,
                 'csrfmiddlewaretoken' : '{{csrf_token}}',
             },
@@ -51,7 +52,6 @@
     
 </script>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 {% endblock %}
 
 
