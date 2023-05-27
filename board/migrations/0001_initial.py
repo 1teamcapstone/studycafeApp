@@ -43,7 +43,7 @@ class Migration(migrations.Migration):
             options={
                 "verbose_name": "게시물",
                 "verbose_name_plural": "게시물",
-                "db_table": "community_board",
+                "db_table": "community",
             },
         ),
     ]

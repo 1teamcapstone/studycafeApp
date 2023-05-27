@@ -11,7 +11,48 @@
             <textarea class ="form-control" readonly>{{ board.contents }}</textarea>
         </div>
         <button type = "button" class = "btn btn-primary" onclick = "location.href = '/board/list/'">돌아가기</button>
+      
     </div>
+        
 </div>
+<h3> comment </h3>
+<div id="comment_list">
+    {% for comment in board.comment_set.all %}
+        <p>{{ comment.body }}</p>
+    {% endfor %}
+</div>
+    <input type="text" id="comment" name="content" placeholder="댓글입력">
+    <button onclick="make_comment({{ board.id }})" type="submit">작성</button>
+<br><br>
 
+
+
+<script>
+    function make_comment(board_id){
+        $.ajax({
+            type: "POST",
+            url: "/commment/create",
+            data: {
+                'board_id' : board_id,
+                'body' : body,
+                'csrfmiddlewaretoken' : '{{csrf_token}}',
+            },
+            dataType: "json",
+            success: function(response);
+                console.log(response.message);
+                $("#comment_list").append("<p>" + response.body = "</p><hr>");
+                $("#comment").val(' ')
+            },
+        error: function(request, status, error){
+            alert(error);
+        }),
+        }
+
+    
+</script>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 {% endblock %}
+
+
+

@@ -32,7 +32,7 @@ urlpatterns = [
     path('test/',cafemapapp.views.studycafe_view, name='studycafe_view'),
     path('sca/',include('cafemapapp.urls')),
     path('aa/',include('scainfoapp.urls')),
- 
+
     
     #path('test_back/', include('cafemapapp.urls')),
 ]

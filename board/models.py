@@ -1,5 +1,10 @@
+from datetime import timezone
+from django.conf import settings
 from django.db import models
 from accounts.models import User
+from datetime import datetime
+from django.urls import reverse
+
 class Board(models.Model):
     title = models.CharField(max_length=64, verbose_name="제목")
     contents = models.TextField(verbose_name="내용")
@@ -10,9 +15,10 @@ class Board(models.Model):
         return self.title
     
     class Meta:
-        db_table = "community_board"
+        db_table = "community"
         verbose_name = "게시물"
         verbose_name_plural = "게시물"
         
-
-# Create your models here.
+class Comment(models.Model):
+    body = models.CharField(max_length=64, verbose_name="내용")
+    post = models.ForeignKey(Board, on_delete = models.CASCADE, null = True)

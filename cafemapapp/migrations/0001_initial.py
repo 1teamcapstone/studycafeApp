@@ -107,7 +107,7 @@ class Migration(migrations.Migration):
                 ('registered_date', models.DateTimeField()),
             ],
             options={
-                'db_table': 'community_board',
+                'db_table': 'community',
                 'managed': False,
             },
         ),

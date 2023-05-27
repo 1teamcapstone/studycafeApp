@@ -1,8 +1,12 @@
-from django.shortcuts import render, redirect
-from .models import Board, User
+
+import json
+from django.shortcuts import get_object_or_404, render, redirect
+from django.urls import reverse, reverse_lazy
+from .models import Board, User, Comment
 from .forms import BoardForm
 from django.core.paginator import Paginator
-from django.http import Http404
+from django.http import Http404, HttpResponseRedirect
+from django.http import HttpResponse
 
 def board_write(request):
     if not request.session.get('user'):
@@ -39,3 +43,14 @@ def board_detail(request, pk):
     except Board.DoesNotExist:
         raise Http404('해당 게시물을 찾을 수 없습니다.')
     return render(request, 'board_detail.html', {'board' : board})
+
+def comment_create_ajax(request):
+    comment= Comment()
+    comment.body =request.POST.get('body')
+    comment.board = get_object_or_404(Board, pk=request.POST.get('board_id'))
+    comment.save()
+    
+    ret = {
+        'body': comment.body,
+    }
+    return HttpResponse(json.dumps(ret), content_type="application/json")

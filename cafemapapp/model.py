@@ -91,14 +91,15 @@ class CafeprojectUser(models.Model):
 
 class CommunityBoard(models.Model):
     id = models.BigAutoField(primary_key=True)
-    title = models.CharField(max_length=64)
+    title = models.CharField(max_length=64, default='')
     contents = models.TextField()
     registered_date = models.DateTimeField()
     writer = models.ForeignKey(CafeprojectUser, models.DO_NOTHING)
 
     class Meta:
         managed = False
-        db_table = 'community_board'
+        db_table = 'community'
+
 
 
 class DjangoAdminLog(models.Model):
