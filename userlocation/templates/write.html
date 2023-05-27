@@ -39,7 +39,7 @@
                         </div>
                         <div class="text-right">
                             <a role="button" href="/" class="btn btn-secondary">취소</a>
-                            <button type="submit" class="btn btn-primary">등록</button>
+                            <button type="submit" onclick="javascript:btn()" class="btn btn-primary">등록</button>
                         </div>
                     </form>
                 </div>
@@ -115,6 +115,14 @@
                     element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
                 }
             </script>
+
+
+            <script>
+                function btn(){
+                    alert('위치등록 완료.');
+                }
+            </script>
+                
         </body>
     </html>
     {% endblock %}
