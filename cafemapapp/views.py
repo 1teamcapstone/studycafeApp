@@ -42,7 +42,7 @@ def study(request):
     return render(request, 'cafemapapp/studytest.html')
 
 def map(request):
-    return render(request, 'cafemapapp/scamap.html')
+    return render(request, 'cafemapapp/test2.html')
 
 # def sca(request):
 #     return render(request, 'cafemapapp/scadatatest.html')

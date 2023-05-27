@@ -3,25 +3,17 @@
     <head>
         <meta charset="utf-8">
         <title>스터디 현황</title>
-
-        <link rel="stylesheet" href='/static/css/currentStudy.css'>
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <link rel="stylesheet" href='/static/css/studycafeMap.css'>
 
     </head>
     <body>
-        <div>
             <h2>스터디 현황</h2>
-            <div id="map"></div>
-        </div>
+            <div class="studybtn" align="right">
+                <button onclick="location.href='/scamap/'">내 주변 스터디카페</button >
+            </div>
 
-        <button onclick="location.href='http://127.0.0.1:8000/test'">내 주변 스터디카페</button >
-        <style>
-            button {
-                position: absolute;
-                top: 10%;
-                left: 71%;
-            }
-        </style>
-
+        <div id="map"></div>
         <script
             type="text/javascript"
             src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e5546ce50e2833e4db42b281b4b23109"></script>

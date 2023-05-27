@@ -142,9 +142,6 @@ class Studycafes(models.Model):
     phone_number = models.CharField(max_length=50, blank=True, null=True)
     sca_like = models.IntegerField()
 
-    def like_save(self):
-        self.save()
-
     class Meta:
         managed = False        
         app_label='mysql'

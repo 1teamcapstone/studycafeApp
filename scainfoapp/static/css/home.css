@@ -6,6 +6,26 @@ select{
   background-color: rgb(242, 242, 242)
 }
 
+.likebtn{
+  display:block;
+  /* color: white; */
+  /* width: 35px; 
+  height: 35px; 
+  line-height:40px;  */
+  border:1px #734A32 solid;
+  /* margin:15px auto;  */
+  background-color:white; 
+  text-align:center; 
+  cursor: pointer;  
+
+  color:#333; 
+  transition:all 0.9s, color 0.3;
+}
+.likebtn:hover{
+  box-shadow: 200px 0 0 0 rgba(0,0,0,0.25) inset, 
+                   -200px 0 0 0 rgba(0,0,0,0.25) inset;
+}
+
 .sort {
   width: 650px;
   margin: auto;
@@ -14,6 +34,10 @@ select{
 .tag{
   width: 650px;
   margin: auto;
+}
+
+.like{
+  position: relative;
 }
 
 .card{
