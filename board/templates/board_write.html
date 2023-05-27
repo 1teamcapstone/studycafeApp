@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+
 {% block contents %}
 
 <div class="row mt-5">
@@ -20,8 +21,9 @@
             <span style="color:red">{{ field.errors }}</span>
             {% endif %}
             {% endfor %}
-            <button type="submit" class="btn btn-primary">글쓰기</button>
-            <button type="button" class="btn btn-primary" onclick="location.href='/board/list/{{ board.id }}'">돌아가기</button>
+         
+            <button type="submit" class="btn text-white" style="background-color: #734A32;">글쓰기</button>
+            <button type="button" class="btn text-white" style="background-color: #734A32;" onclick="location.href='/board/list/{{ board.id }}'">돌아가기</button>
         </form>
     </div>
 </div>
