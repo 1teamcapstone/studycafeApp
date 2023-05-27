@@ -1,0 +1,96 @@
+
+
+h2 { text-align: center; }
+
+/* .imgbox{
+    text-align: center;
+
+} */
+
+.scaimg{
+    width: 590px;
+    margin-top: 20px;
+
+}
+
+select{
+  text-align-last: center;
+  text-align: center;
+  background-color: rgb(242, 242, 242)
+}
+
+.likebtn{
+  display:block;
+  /* color: white; */
+  /* width: 35px; 
+  height: 35px; 
+  line-height:40px;  */
+  border:1px #734A32 solid;
+  /* margin:15px auto;  */
+  background-color:white; 
+  text-align:center; 
+  cursor: pointer;  
+
+  color:#333; 
+  transition:all 0.9s, color 0.3;
+}
+.likebtn:hover{
+  box-shadow: 200px 0 0 0 rgba(0,0,0,0.25) inset, 
+                   -200px 0 0 0 rgba(0,0,0,0.25) inset;
+}
+
+.sort {
+  width: 650px;
+  margin: auto;
+}
+
+.tag{
+  width: 650px;
+  margin: auto;
+}
+
+.like{
+  position: relative;
+}
+
+.card{
+  /* background-color: #D9D1C7; */
+  width: 650px;
+  height: auto;
+  border: 5px solid #734A32;
+  margin: auto;
+}
+
+.card-body{
+  margin-left: 5%;
+  margin-right: 5%;
+  /* margin-top: 5%; */
+  margin-bottom: 5%;
+}
+
+.star-ratings {
+    color: #aaa9a9; 
+    position: relative;
+    unicode-bidi: bidi-override;
+    width: max-content;
+    -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 1.3px;
+    -webkit-text-stroke-color: #2b2a29;
+  }
+   
+  .star-ratings-fill {
+    color: #fff58c;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    -webkit-text-fill-color: gold;
+  }
+   
+  .star-ratings-base {
+    z-index: 0;
+    padding: 0;
+  }

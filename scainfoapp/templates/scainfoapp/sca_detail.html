@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,
+    initial-scale=1.0">
+        <title>{{studycafe.name}}</title>
+        <link rel="stylesheet" href='/static/css/detail.css'>
+    </head>
+    <body>
+        <h2 style="text-align: center;">{{studycafe.name}}</h2>           
+
+        <div class="container">
+            {% comment %} {% for sca in posts %} {% endcomment %}
+                <div class="card">
+                    
+                    <div class="card-body">
+                        <div class="imgbox">
+                        <img class="scaimg" src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20191218_102%2F1576635755959dX1j9_JPEG%2F9bKVI9kiwzcnLfKPlBcCUSlR.jpg"></img>
+                        </div>
+                        {% comment %} <p>{{sca.id}}</p> {% endcomment %}
+                        <h4 class="card-title">{{studycafe.name}}<div class="like" align="right">
+                            <form method='post' action=''>
+                                {% csrf_token %}
+                                <input type="hidden" name="like_button" value="{{studycafe.id}}">
+                                <span><button class="likebtn" type="submit">찜</button></span>
+                            </form> </div> 
+                        </h4>
+                                             
+                        
+                        <p>주소 : 
+                            {{studycafe.address}} <a onclick="location.href='/scamap/{{studycafe.id}}/'">위치 확인</a></p>
+                        <p>별점 :
+                            {{studycafe.star_rating}}</p>
+
+                        {%load mathfilters%}
+                        <div class="star-ratings">
+
+                            <div class="star-ratings-fill" style="width:{{studycafe.star_rating|mul:20}}%">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                            </div>
+                            <div class="star-ratings-base">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                            </div>
+                        </div>
+
+                        <p>리뷰 :
+                            {{studycafe.review}} <button onclick="location.href='/review/write'">리뷰 쓰기</button ></p>
+                        <p>영업시간 :
+                            {{studycafe.time}}</p>
+                        <p>전화번호 :
+                            {{studycafe.phone_number}}</p>
+
+                        {% for hashtag in hashtags %}
+                            {%if studycafe.id is hashtag.sca_id%}
+
+                                <span>#{{hashtag.name}}</span>
+
+                            {%endif%}
+                        {%endfor%}
+                        <p>찜 :
+                            {{studycafe.sca_like}}</p>
+                    </div>
+                    <p></p>
+                </div>
+                <br></br>
+            <p></p>
+            
+                </body>
+            </html>

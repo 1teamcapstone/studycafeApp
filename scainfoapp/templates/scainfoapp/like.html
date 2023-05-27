@@ -29,9 +29,14 @@
         <div class="container">
             {% for sca in posts %}
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body" onclick="location.href='/scainfo/detail/{{sca.id}}'">
                         {% comment %} <p>{{sca.id}}</p> {% endcomment %}
-                        <h4 class="card-title">{{sca.name}}</h4>
+                        <h4 class="card-title">{{sca.name}}<div class="like" align="right">
+                            <form method='post' action=''>
+                                {% csrf_token %}
+                                <input type="hidden" name="like_button" value="{{sca.id}}">
+                                <span><button class="likebtn" type="submit">찜</button></span>
+                            </form> </div> </h4>
                         <p>{{sca.address}}</p>
                         <p>별점 :
                             {{sca.star_rating}}</p>
@@ -48,7 +53,7 @@
                         </div>
 
                         <p>리뷰 :
-                            {{sca.review}}</p>
+                            {{sca.review}} <button onclick="location.href='/review/write'">리뷰 쓰기</button ></p>
                         <p>영업시간 :
                             {{sca.time}}</p>
                         <p>전화번호 :
@@ -61,6 +66,8 @@
 
                             {%endif%}
                         {%endfor%}
+                        <p>찜 :
+                            {{sca.sca_like}}</p>
                     </div>
                     <p></p>
                 </div>

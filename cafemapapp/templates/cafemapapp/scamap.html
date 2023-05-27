@@ -11,7 +11,8 @@
 
     </head>
     <body>
-        <h2>스터디카페 찾기</h2>        
+        <h2>스터디카페 찾기</h2>
+
 
         <div class="studybtn" align="right">
             <button onclick="location.href='/scainfo/all/'" >목록으로 보기</button >
@@ -38,10 +39,34 @@
                 .Map(mapContainer, mapOption);
 
             // 주소-좌표 변환 객체를 생성합니다
-            var geocoder = new kakao
+            var geocoder1 = new kakao
                 .maps
                 .services
                 .Geocoder();
+
+
+            geocoder1.addressSearch("{{location.location}}", function (result1, status1) {
+
+                    // 정상적으로 검색이 완료됐으면
+                    if (status1 === kakao.maps.services.Status.OK) {
+
+                        var coords1 = new kakao
+                            .maps
+                            .LatLng(result1[0].y, result1[0].x);
+
+                        var marker1 = new kakao.maps.Marker({
+                            position: coords1
+                        });
+                        // 마커가 지도 위에 표시되도록 설정합니다
+                        marker1.setMap(map);    
+
+                        map.setCenter(coords1);
+                        
+                    }
+                });
+            
+            
+                            
 
             var sca = new Array();
             let sca_dict = {};
@@ -55,6 +80,12 @@
 
             // 마커 이미지의 이미지 주소입니다
             var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+
+            // 주소-좌표 변환 객체를 생성합니다
+            var geocoder = new kakao
+                .maps
+                .services
+                .Geocoder();
 
             sca.forEach(function (scainfo) { //추가한 코드
                 // 주소로 좌표를 검색합니다
@@ -81,10 +112,11 @@
                         var marker = new kakao
                             .maps
                             .Marker({map: map, position: coords, title: scainfo.name, image: markerImage});
+                        
 
 
                         // 커스텀 오버레이에 표출될 내용
-                        var content = '<div class="customoverlay">  <a href="/scainfo/all/"' +
+                        var content = '<div class="customoverlay">  <a href="https://map.kakao.com/link/to/{{studycafe.name}},y,x"' +
                                 ' target="_blank">    <span class="title">'+scainfo.name+'</span>  </a></div>';
 
 
@@ -92,7 +124,6 @@
                         var customOverlay = new kakao
                             .maps
                             .CustomOverlay({});
-
 
                         kakao.maps.event.addListener(marker, 'click', function(mouseEvent) {
                                                      
@@ -107,7 +138,7 @@
         
                             customOverlay.setMap(null);
                         }); 
-                        //map.setCenter(coords);
+                        
                     }
                 });
             });

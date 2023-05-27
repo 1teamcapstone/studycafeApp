@@ -29,7 +29,7 @@
         <div class="container">
             {% for sca in posts %}
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body" onclick="location.href='/scainfo/detail/{{sca.id}}'">
                         {% comment %} <p>{{sca.id}}</p> {% endcomment %}
                         <h4 class="card-title">{{sca.name}}<div class="like" align="right">
                             <form method='post' action=''>

@@ -5,6 +5,7 @@ from .models import Studycafes  #추가
 from .serializers import TestDataSerializer #추가
 from django.core.paginator import Paginator
 from .models import Hashtags
+from userlocation.models import UserLocation
 
 
 @api_view(['GET'])
@@ -28,8 +29,17 @@ def getTestDatas(request):
 
 def studycafe_view(request):
     studycafe=Studycafes.objects.all()
+    location=UserLocation.objects.first()
+    #location=UserLocation.objects.last()
     #print(studycafe)
-    return render(request, 'cafemapapp/scamap.html',{'studycafe':studycafe})
+    #print(location)
+    return render(request, 'cafemapapp/scamap.html',{'studycafe':studycafe, 'location':location})
+
+def maptest_view(request, pk):
+    studycafe=get_object_or_404(Studycafes, id=pk)
+    #print(studycafe)
+    return render(request, 'cafemapapp/onemarker.html',{'studycafe':studycafe})
+
 
 # Create your views here.
 # def index(request):
