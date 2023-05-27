@@ -36,6 +36,7 @@ urlpatterns = [
     path('area/', area.views.area, name='area'),    
     # path('main/', main.views.main, name='main'),
     path('review/', include('review.urls')), 
-    
     path('test_back/', include('cafemapapp.urls')),
+    
+    path('blog/', include('blog.urls')), 
 ]
