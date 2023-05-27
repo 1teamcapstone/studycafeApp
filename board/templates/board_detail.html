@@ -24,7 +24,7 @@
 </div>
 
     <input type="text" id="comment" name="content" placeholder="댓글입력">
-    <button onclick="make_comment({{ board_id }})" type="submit" class = "btn btn-primary">작성</button>
+    <button onclick="make_comment({{ board.id}})" type="submit" class = "btn btn-primary">작성</button>
     
 <br><br>
 
@@ -32,7 +32,7 @@
     window.onload=function make_comment(board_id){
         $.ajax({
             type: "POST",
-            url: "/comment/create",
+            url: "/comment/create/",
             data: {
                 'board_id' : board_id
                 'body' : body,

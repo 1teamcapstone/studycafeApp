@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block contents %}
+
+<div class = "row mt-5">
+    <div class = "col-12">
+        <table class = "table table-light">
+            <thead class = "thead-light">
+                <tr>
+                    <th>#</th>
+                    <th>작성자</th>
+                    <th>리뷰내용</th>
+                </tr>
+            </thead>
+            <tbody class = "text-dark">
+                {% for review in reviews %}
+                <tr onclick = "location.href = '/review/detail/{{review.id}}'">
+                    <th>{{review.id}}</th>
+                    <th>{{review.writer}}</th>
+                    <th>{{review.contents}}</th>
+                    <th>{{review.registered_date}}</th>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class = "row mt-2">
+    <div class = "col-12">
+        <nav>
+            <ul class = "pagination justify-content-center">
+                {% if boards.has_previous %}
+                    <li class = "page-item">
+                        <a class = "page-link" href = "?p={{reviews.previous_page_number}}">이전으로</a>
+                    </li>
+                {% else %}
+                    <li class = "page-item disabled">
+                        <a class = "page-link disabled" href = "#">이전으로</a>
+                    </li>
+                {% endif %}
+
+                <li class = "page-item active">
+                    <a class = "page-link">{{reviews.number}}/{{reviews.paginator.num_pages}}</a>
+                </li>
+
+                {% if reviews.has_next %}
+                    <li class = "page-item">
+                        <a class = "page-link" href = "?p={{reviews.next_page_number}}">다음으로</a>
+                    </li>
+                {% else %}
+                    <li class = "page-item disabled">
+                        <a class = "page-link disabled" href = "#">다음으로</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<div class = "row">
+    <div class = "col-12">
+        <button class = "btn btn-primary" onclick = "location.href = '/review/write/'">리뷰쓰기</button>
+    </div>
+</div>
+{% endblock %}
