@@ -1,5 +1,34 @@
+h2 { text-align: center; }
+
+select{
+  text-align-last: center;
+  text-align: center;
+  background-color: rgb(242, 242, 242)
+}
+
+.sort {
+  width: 650px;
+  margin: auto;
+}
+
+.tag{
+  width: 650px;
+  margin: auto;
+}
+
 .card{
-    border: 1px solid #734A32;
+  background-color: #D9D1C7;
+  width: 650px;
+  height: auto;
+  border: 5px solid #734A32;
+  margin: auto;
+}
+
+.card-body{
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
 .star-ratings {

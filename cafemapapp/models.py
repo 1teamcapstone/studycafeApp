@@ -122,6 +122,17 @@ class DjangoSession(models.Model):
         db_table = 'django_session'
 
 
+class Hashtags(models.Model):
+    tag_id = models.AutoField(primary_key=True)
+    sca = models.ForeignKey('Studycafes', models.DO_NOTHING)
+    name = models.CharField(max_length=50, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        app_label='mysql'
+        db_table = 'hashtags'
+
+
 class Studycafes(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
     address = models.CharField(max_length=255, blank=True, null=True)

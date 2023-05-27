@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'cafemapapp',
     'rest_framework',
     'scainfoapp',
-   
+    'area',
+    'main',
 
 ]
 
@@ -104,6 +105,9 @@ DATABASES = {
         'PASSWORD': '12345678',
         'HOST': 'studycafedb.crl5x6vxh4r3.ap-northeast-2.rds.amazonaws.com',
         'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        },
     }
 }
 
