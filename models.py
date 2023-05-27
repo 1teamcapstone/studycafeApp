@@ -129,7 +129,6 @@ class Hashtags(models.Model):
 
     class Meta:
         managed = False
-        app_label='mysql'
         db_table = 'hashtags'
 
 
@@ -142,10 +141,6 @@ class Studycafes(models.Model):
     phone_number = models.CharField(max_length=50, blank=True, null=True)
     sca_like = models.IntegerField()
 
-    def like_save(self):
-        self.save()
-
     class Meta:
-        managed = False        
-        app_label='mysql'
+        managed = False
         db_table = 'studycafes'

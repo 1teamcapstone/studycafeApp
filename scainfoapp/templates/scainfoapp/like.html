@@ -4,27 +4,27 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,
     initial-scale=1.0">
-        <title>스터디카페 목록</title>
+        <title>찜한 스터디카페 목록</title>
         <link rel="stylesheet" href='/static/css/home.css'>
     </head>
     <body>
-        <h2 style="text-align: center;">스터디카페 목록</h2>
-        <div class="sort" align="right">
+        <h2 style="text-align: center;">찜한 스터디카페 목록</h2>
+        {% comment %} <div class="sort" align="right">
         <select title="" onchange="window.location.href=this.value">
             <option value="http://127.0.0.1:8000/scainfo/all/" selected>기본 순</option>
             <option value="http://127.0.0.1:8000/scainfo/sort_star/">별점 순</option>
             <option value="http://127.0.0.1:8000/scainfo/sort_review/">리뷰 많은 순</option>
         </select>
-    </div>
+    </div> {% endcomment %}
 
-        <div class="tag" align="left">
+        {% comment %} <div class="tag" align="left">
         <form method='post' action='{% url 'hashtag' %}'>
             {% csrf_token %}
             <input type="text" name="search_button" placeholder="관련 해시태그 검색 (ex) #노트북존" style="width:300px; background-color: rgb(242, 242, 242)" onfocus="this.placeholder=''" onblur="this.placeholder='관련 해시태그 검색'">
             <button class="btn btn-primary" type="submit">검색</button>
         </form>
         <p></p>
-    </div>
+    </div> {% endcomment %}
 
         <div class="container">
             {% for sca in posts %}
@@ -32,12 +32,6 @@
                     <div class="card-body">
                         {% comment %} <p>{{sca.id}}</p> {% endcomment %}
                         <h4 class="card-title">{{sca.name}}</h4>
-                        <form method='post' action=''>
-                            {% csrf_token %}
-                            <input type="hidden" name="like_button" value="{{sca.id}}">
-                            <span><button class="btn btn-primary" type="submit">♡</button></span>
-                        </form>                       
-                        
                         <p>{{sca.address}}</p>
                         <p>별점 :
                             {{sca.star_rating}}</p>
@@ -67,8 +61,6 @@
 
                             {%endif%}
                         {%endfor%}
-                        <p>찜 :
-                            {{sca.sca_like}}</p>
                     </div>
                     <p></p>
                 </div>

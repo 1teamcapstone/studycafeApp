@@ -11,6 +11,22 @@ def test_view(request):
     paginator=Paginator(sca_list,5)
     page=request.GET.get('page')
     posts=paginator.get_page(page)
+
+    like = request.POST.get('like_button') # keyword를 입력받음
+    #sca_name=Studycafes.objects.filter(id=like).only("name")
+    #sca_like=Studycafes.objects.filter(id=like).only("sca_like")
+
+    if like:        
+        item=Studycafes.objects.get(pk=like)
+        if item.sca_like==0:
+        # print(Studycafes.pk)
+        # print(like)
+        # print(sca_name)
+            item.sca_like=1
+            item.save()
+        else:
+            item.sca_like=0
+            item.save()
     return render(request,'scainfoapp/all.html',{'studycafes':studycafes, 'posts':posts, 'hashtags':hashtags})
 
 def sortstar_view(request):
@@ -30,6 +46,15 @@ def sortreview_view(request):
     page=request.GET.get('page')
     posts=paginator.get_page(page)
     return render(request,'scainfoapp/sort_review.html',{'studycafes':studycafes, 'posts':posts, 'hashtags':hashtags})
+
+def like_view(request):
+    hashtags=Hashtags.objects.all()
+    studycafes=Studycafes.objects
+    like_list=Studycafes.objects.filter(sca_like=1).all()
+    paginator=Paginator(like_list,5)
+    page=request.GET.get('page')
+    posts=paginator.get_page(page)
+    return render(request,'scainfoapp/like.html',{'studycafes':studycafes, 'posts':posts, 'hashtags':hashtags})
 
 
 #hash tag 검색

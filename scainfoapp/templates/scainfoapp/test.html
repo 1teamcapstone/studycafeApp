@@ -35,8 +35,8 @@
                         <form method='post' action=''>
                             {% csrf_token %}
                             <input type="hidden" name="like_button" value="{{sca.id}}">
-                            <span><button class="btn btn-primary" type="submit">♡</button></span>
-                        </form>                       
+                            <span><button class="btn btn-primary" type="submit">☆</button></span>
+                        </form>
                         
                         <p>{{sca.address}}</p>
                         <p>별점 :
@@ -67,6 +67,7 @@
 
                             {%endif%}
                         {%endfor%}
+
                         <p>찜 :
                             {{sca.sca_like}}</p>
                     </div>
