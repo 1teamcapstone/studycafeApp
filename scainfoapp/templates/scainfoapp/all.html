@@ -8,6 +8,8 @@
         <link rel="stylesheet" href='/static/css/home.css'>
     </head>
     <body>
+        <div class="home">
+        <a href="/"><img class="homebtn" src="/static/images/homebtn.png"/></a></div>
         <h2 style="text-align: center;">스터디카페 목록</h2>
         <div class="sort" align="right">
         <select title="" onchange="window.location.href=this.value">
@@ -55,7 +57,9 @@
                         </div>
 
                         <p>리뷰 :
-                            {{sca.review}} <button onclick="location.href='/review/write'">리뷰 쓰기</button ></p>
+                            {{sca.review}} 
+                            {% comment %} <button onclick="location.href='/review/write'">리뷰 쓰기</button > {% endcomment %}
+                            </p>
                         <p>영업시간 :
                             {{sca.time}}</p>
                         <p>전화번호 :

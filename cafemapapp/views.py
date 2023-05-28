@@ -29,8 +29,8 @@ from userlocation.models import UserLocation
 
 def studycafe_view(request):
     studycafe=Studycafes.objects.all()
-    location=UserLocation.objects.first()
-    #location=UserLocation.objects.last()
+    #location=UserLocation.objects.first()
+    location=UserLocation.objects.last()
     #print(studycafe)
     #print(location)
     return render(request, 'cafemapapp/scamap.html',{'studycafe':studycafe, 'location':location})

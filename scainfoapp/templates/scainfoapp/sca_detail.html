@@ -8,7 +8,11 @@
         <link rel="stylesheet" href='/static/css/detail.css'>
     </head>
     <body>
-        <h2 style="text-align: center;">{{studycafe.name}}</h2>           
+        <div class="home">
+        <a href="/"><img class="homebtn" src="/static/images/homebtn.png"></img></a></div>
+        
+        <div>
+        <h2 style="text-align: center;">{{studycafe.name}}</h2></div>         
 
         <div class="container">
             {% comment %} {% for sca in posts %} {% endcomment %}
