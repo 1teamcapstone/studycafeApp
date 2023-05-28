@@ -6,6 +6,7 @@
     initial-scale=1.0">
         <title>스터디카페 목록</title>
         <link rel="stylesheet" href='/static/css/home.css'>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     </head>
     <body>
         <div class="home">
@@ -38,7 +39,7 @@
                             <form method='post' action=''>
                                 {% csrf_token %}
                                 <input type="hidden" name="like_button" value="{{sca.id}}">
-                                <span><button class="likebtn" type="submit">찜하기</button></span>
+                                <span><button id="likebtn" style= "background-color:transparent; border: none;" class="likebtn" type="submit" onclick="btn()">❤️</button></span>
                             </form> </div><div style="clear:both;"></div>
                                              
                         
@@ -97,5 +98,12 @@
                 </div>
                     </div>
                     <p></p>
+
+                    <script>
+                        function btn(){
+                            swal("찜 완료");}
+                    </script>
                 </body>
+              
+                 
             </html>
