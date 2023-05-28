@@ -8,8 +8,21 @@
     <link href="/static/css/area.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-    <a href="#" class="home-btn"></a>
-    <nav class="minimalist-vertical-menu">
+    <div class="top-bar"
+      style="position: fixed; top: 0;
+              left: 0;
+              width: 100%;
+              background-color: white;
+              color: #324028;
+              padding: 10px;
+              z-index: 9999;
+              height: 70px;
+              border-bottom: 1px solid gainsboro;">
+      <a href="/"><img class="home-btn" src="/static/home-img.png"
+          style="display:block; position: absolute; top: 20px; right: 50px; left: 34px; width: 30px; height: 30px; background-size: cover;"/></a>        
+      <h2 style="margin-left: 80px; margin-top: 5px;">지역으로 찾아보기</h2>
+    </div>
+    <nav class="minimalist-vertical-menu" style="margin-top: 70px;">
         
         <div class="minimalist-tab-menu">
           <ul class="list-group">
