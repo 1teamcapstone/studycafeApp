@@ -129,7 +129,6 @@ class Hashtags(models.Model):
 
     class Meta:
         managed = False
-        app_label='mysql'
         db_table = 'hashtags'
 
 
@@ -144,6 +143,5 @@ class Studycafes(models.Model):
     sca_image = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False        
-        app_label='mysql'
+        managed = False
         db_table = 'studycafes'

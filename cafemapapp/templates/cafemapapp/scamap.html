@@ -74,6 +74,7 @@
             let sca_dict = {};
             {% for studycafe in studycafe %}
                 sca_dict = {
+                    'id' : '{{studycafe.id}}',
                     'name': '{{studycafe.name}}',
                     'address': '{{studycafe.address}}'
                 };
@@ -117,10 +118,16 @@
 
 
                         // 커스텀 오버레이에 표출될 내용
-                        var content = '<div class="customoverlay">  <a href="https://map.kakao.com/link/to/{{studycafe.name}},y,x"' +
-                                ' target="_blank">    <span class="title">'+scainfo.name+'</span>  </a></div>';
+                        /*var content = '<div class="customoverlay">  <a href="https://map.kakao.com/link/to/{{studycafe.name}},y,x"' +
+                                ' target="_blank">    <span class="title">'+scainfo.name+'</span>  </a></div>';*/
 
+                        //var link='/scainfo/detail/{{sca.id}}'        
 
+                        // 커스텀 오버레이에 표출될 내용
+                        var content = '<div class="customoverlay"> <a href="http://127.0.0.1:8000/scainfo/detail/'+scainfo.id+'/"> '+
+                            ' <span class="title">'+scainfo.name+'</span>  </a></div>';
+
+                            //onclick="location.href='/scainfo/detail/{{sca.id}}'"
                         // 커스텀 오버레이를 생성합니다
                         var customOverlay = new kakao
                             .maps
