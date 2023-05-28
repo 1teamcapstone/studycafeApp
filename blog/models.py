@@ -13,6 +13,7 @@ class Post(models.Model):
     start_time = models.TimeField(blank=False, null=False)
     end_time = models.TimeField(blank=False, null=False)
     limit_people = models.IntegerField(default=2)
+    text = models.TextField(default='', blank=True)
     
     def publish(self):
         self.end_date = timezone.now()

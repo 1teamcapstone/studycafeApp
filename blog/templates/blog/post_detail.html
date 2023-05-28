@@ -13,16 +13,19 @@
         <p>날짜 | {{ post.study_day|linebreaksbr }}</p>
         <p>시간 | {{ post.start_time|linebreaksbr }}~{{ post.end_time|linebreaksbr }}</p>
         <p>기간 | {{ post.start_date|linebreaksbr }}~{{ post.end_date|linebreaksbr }}</p>
+        <p>세부정보 | {{ post.text|linebreaksbr }}</p>
         <p>제한인원 | {{ post.limit_people|linebreaksbr }}</p>
-        신청인원🧑‍💻<p id="count">  0</p>
+        <p><span>신청인원 | <span id="count"> 0</span></p>
+
         <script>
+
             const plusBtn = document.createElement('button');
             let plusBtnText = document.createTextNode('신청')
             plusBtn.style.background= "#a69958";
             plusBtn.style.color = "#ffffff";
             plusBtn.style.textAlign = 'center';
-            plusBtn.style.fontSize = '10pt';
-            plusBtn.style.borderColor = 'white';
+            plusBtn.style.fontSize = '12pt';
+
             plusBtn.appendChild(plusBtnText);
         
             document.body.appendChild(plusBtn);

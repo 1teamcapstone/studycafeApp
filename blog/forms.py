@@ -5,7 +5,7 @@ from django.forms.widgets import NumberInput
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'study_place', 'study_day','start_date', 'end_date','start_time', 'end_time', 'limit_people')
+        fields = ('title', 'study_place', 'study_day','start_date', 'end_date','start_time', 'end_time', 'limit_people', 'text')
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'study_place': forms.TextInput(attrs={'class': 'form-control'}),
@@ -14,7 +14,8 @@ class PostForm(forms.ModelForm):
             'end_date': forms.NumberInput(attrs={'type': 'date', 'class': 'form-control'}),
             'start_time': forms.TimeInput(attrs={'type': 'time', 'class': 'form-control'}),
             'end_time': forms.TimeInput(attrs={'type': 'time', 'class': 'form-control'}),
-            'limit_people': forms.NumberInput(attrs={'step': 1, 'max': 10, 'min': 2, 'class': 'form-control'}),                            
+            'limit_people': forms.NumberInput(attrs={'step': 1, 'max': 10, 'min': 2, 'class': 'form-control'}),   
+            'text': forms.Textarea(attrs={'row': 5, 'class': 'form-control'}),                  
         }
         labels = {
             'title': '스터디명',
@@ -25,4 +26,5 @@ class PostForm(forms.ModelForm):
             'start_time': '시작시각', 
             'end_time': '종료시각', 
             'limit_people': '제한인원',
+            'text': '세부정보',
         }  
