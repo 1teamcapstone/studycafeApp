@@ -34,7 +34,7 @@
     height: auto;
   }
   
-  .home-icon {
+  .home-btn {
     display: block;
     position: absolute;
     top: 34px;
@@ -43,7 +43,7 @@
     /* padding-right: 10px; */
     width: 30px;
     height: 30px;
-    background-image: url('home-icon.png'); /* 집 모양 이미지 파일 경로 */
+    background-image: url('/static/home-img.png'); /* 집 모양 이미지 파일 경로 */
     background-size: cover;
   }
   
