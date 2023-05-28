@@ -4,10 +4,9 @@
         <meta charset="utf-8">
         <title>스터디카페 찾기</title>
 
-        <!-- <script src="http://code.jquery.com/jquery-latest.min.js"></script> -->
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
         <link rel="stylesheet" href='/static/css/studycafeMap.css'>
     </head>
-
     <body>
         <div class="top-bar">
             <a href="/"><img class="home-btn" src="/static/home-img.png"></a>        
@@ -16,8 +15,8 @@
 
         <div class="container" style="margin-top: 150px;">
             <div class="studybtn" align="right">
-                <button onclick="location.href='/scainfo/all/'" >목록으로 보기</button >
-                <button onclick="location.href='/study/'" >개설 스터디 현황</button >
+                <button onclick="location.href='/scainfo/all/'">목록으로 보기</button>
+                <button onclick="location.href='/study/'">개설 스터디 현황</button>
             </div>
         </div>
 
@@ -25,7 +24,8 @@
 
         <script
             type="text/javascript"
-            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e5546ce50e2833e4db42b281b4b23109&libraries=services"></script>
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e5546ce50e2833e4db42b281b4b23109&libraries=services">
+        </script>
         <script>
             var mapContainer = document.getElementById('map'), // 지도를 표시할 div
                 mapOption = {
