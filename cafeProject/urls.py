@@ -28,7 +28,7 @@ urlpatterns = [
     path('', views.home), ## 홈화면 주소들은 따로 html끼리모으고..연동시키기
     path('userlocation/', include('userlocation.urls')),
     path('board/', include('board.urls')),
-    path('map/',cafemapapp.views.map, name='map'),
+    #path('map/',cafemapapp.views.map, name='map'),
     path('study/',cafemapapp.views.study, name='study'),
     path('scamap/',cafemapapp.views.studycafe_view, name='studycafe_view'),
     #path('sca/',include('cafemapapp.urls')),
@@ -36,7 +36,7 @@ urlpatterns = [
     path('area/', area.views.area, name='area'),    
     # path('main/', main.views.main, name='main'),
     path('review/', include('review.urls')), 
-    path('test_back/', include('cafemapapp.urls')),
+    #path('test_back/', include('cafemapapp.urls')),
     
     path('blog/', include('blog.urls')), 
 ]
