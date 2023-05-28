@@ -32,7 +32,10 @@
         </div>
         {% endcomment %} -->
 
+
+        <div class="info"><p>클릭 시 길찾기 페이지로 이동합니다.</p></div>
         <div id="map"></div>
+        
         <script
             type="text/javascript"
             src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e5546ce50e2833e4db42b281b4b23109&libraries=services">
@@ -108,7 +111,7 @@
 
                         
                         // 커스텀 오버레이에 표출될 내용
-                        var content = '<div class="customoverlay">  <a href="https://map.kakao.com/link/to/{{studycafe.name}},y,x"' +
+                        var content = '<div class="customoverlay">  <a href="https://map.kakao.com/link/to/{{studycafe.name}},'+y+','+x+'"' +
                                 ' target="_blank">    <span class="title">'+"{{studycafe.name}}"+'</span>  </a></div>';
 
 
