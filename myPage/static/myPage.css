@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+* {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+  body {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #D9D1C7 !important;
+    color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .pfl-wrapper {
+    display: block;
+    width: auto;
+    height: 100%;
+    padding: 40px;
+    margin: 50px;
+    background-color: #D9D1C7;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.08);
+    overflow: auto;
+  }
+  
+  #nav {
+    display: block;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    right: 50px;
+    width: auto;
+    height: auto;
+  }
+  
+  .home-icon {
+    display: block;
+    position: absolute;
+    top: 34px;
+    right: 50px;
+    left: 34px;
+    /* padding-right: 10px; */
+    width: 30px;
+    height: 30px;
+    background-image: url('home-icon.png'); /* 집 모양 이미지 파일 경로 */
+    background-size: cover;
+  }
+  
+  article {
+    display: block;
+    width: auto;
+    height: auto;
+    padding: 50px 0;
+    overflow: auto;
+  }
+  article .profile-photo {
+    display: block;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background-color: white;
+    margin: 0 auto;
+    background-image: url('http://nickylew.com/wp-content/uploads/2017/05/nickylew-2017.jpg');
+    background-size: 230%;
+    background-position: 80% 0%;
+    background-repeat: no-repeat;
+  }
+  article .profile-info {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  article .profile-info h1 {
+    font-size: 2em;
+    font-weight: 600;
+    margin-top: 0.5em;
+  }
+
+  article .whatever {
+    margin-top: 50px;
+  }
+  
+  article .posts {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 30px 0 0;
+  }
+  
+  article .posts .tile {
+    margin-bottom: 30px;
+  }
+
+  a {
+    text-decoration: none !important;
+  }
+
+  article .posts .tile .inner {
+    display: block; 
+    width: 100%;
+    overflow: hidden;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+    transition: box-shadow 0.25s;
+  }
+
+  article .posts .tile .inner h4 { /* 타일 글씨 */
+    font-size: 1.1em;
+    line-height: 1.4em;
+    padding: 20px 15px 10px;
+    transition: color 0.25s;
+    text-align: center;
+    color: black; 
+  }
+
+  article .posts .tile .inner:hover { /* 타일에 마우스 올라가면 */
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.25s;
+  }
+  
+  article .posts .tile .inner:hover h4 { /* 타일에 마우스 올라가면 글씨 */
+    color: #A69958; 
+    transition: color 0.25s;
+  }
+  
+  @media (max-width: 480px) {
+    .pfl-wrapper {
+      margin: 30px;
+      padding: 40px 0 0;
+    }
+    article .profile-info {
+      padding: 0 30px;
+    }
+    #nav .nav-icon {
+      top: 10px;
+      left: 10px;
+    }
+    .home-icon {
+      top: 5px;
+      right: 10px;
+    }
+  }
+  

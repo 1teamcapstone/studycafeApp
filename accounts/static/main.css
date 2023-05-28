@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
 :root {
     --primary: #734A32; /* 324028 A69958 734A32 */
@@ -9,7 +8,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Nanum Gothic', 'Black Han Sans', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 body {

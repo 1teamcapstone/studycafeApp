@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'area',
     'review',
     'blog', # 인선 추가
+    'myPage',
 
 ]
 

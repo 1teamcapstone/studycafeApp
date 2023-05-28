@@ -39,4 +39,7 @@ urlpatterns = [
     #path('test_back/', include('cafemapapp.urls')),
     
     path('blog/', include('blog.urls')), 
+
+    path('myPage/', views.mypage, name='maPage'),
+
 ]
