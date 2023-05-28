@@ -147,7 +147,6 @@ def hashtag_view(request):
 
             studycafes= Studycafes.objects.filter(name = keyword) # 해당 상호명을 가진 studycafe 저장
 
-
             return render(request, 'scainfoapp/search_result.html', {'studycafes':studycafes, 'keyword':keyword, 'hashtags':hashtags})
 
         else: 
@@ -169,4 +168,18 @@ def hashtag_view(request):
         #     return render(request,'scainfoapp/search_result.html',{'studycafes':studycafes, 'posts':posts, 'hashtags':hashtags})
             
 
+def searchsort_view(request, kw):
+    hashtags=Hashtags.objects.all()
+    keyword = request.POST.get('search_button') # keyword를 입력받음
+    kw=keyword.split('#')
+    scaid=Hashtags.objects.filter(name=kw[1]).values_list('sca_id')
 
+    studycafes= Studycafes.objects.filter(id__in = scaid) # 해당 태그를 가진 studycafe 저장
+
+    print(keyword)
+
+    studycafes=Studycafes.objects.filter(name = keyword).order_by('-star_rating')
+    sca_list=Studycafes.objects
+
+    return render(request, 'scainfoapp/result_sort_star.html', {'studycafes':studycafes, 'keyword':keyword, 'hashtags':hashtags})
+        

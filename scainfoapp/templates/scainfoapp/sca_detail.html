@@ -23,11 +23,11 @@
                         <img class="scaimg" src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20191218_102%2F1576635755959dX1j9_JPEG%2F9bKVI9kiwzcnLfKPlBcCUSlR.jpg"></img>
                         </div>
                         {% comment %} <p>{{sca.id}}</p> {% endcomment %}
-                        <h4 class="card-title">{{studycafe.name}}<div class="like" align="right">
+                        <h3 class="card-title">{{studycafe.name}}</h3><div class="like" align="right">
                             <form method='post' action=''>
                                 {% csrf_token %}
                                 <input type="hidden" name="like_button" value="{{studycafe.id}}">
-                                <span><button class="likebtn" type="submit">찜</button></span>
+                                <span><button class="likebtn" type="submit">찜하기</button></span>
                             </form> </div> 
                         </h4>                        
                         <p>주소 : 
@@ -37,21 +37,33 @@
 
                         {%load mathfilters%}
                         <div class="star-ratings">
-
-                            <div class="star-ratings-fill" style="width:{{studycafe.star_rating|mul:20}}%">
-                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                            </div>
-                            <div class="star-ratings-base">
-                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                            {%load mathfilters%}
+                            <div class="star-ratings">    
+                                <div class="star-ratings-fill" style="width:{{studycafe.star_rating|mul:20}}%">
+                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                </div>
+                                <div class="star-ratings-base">
+                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                </div>
                             </div>
                         </div>
+                                                                     
+                        
+                        <p><img class="locationbtn" src="/static/image/location.png"></img> 
+                            {{studycafe.address}} </p>
+                        {% comment %} <p>별점 :
+                            {{studycafe.star_rating}}</p> {% endcomment %}
 
-                        <p>리뷰 :
-                            {{studycafe.review}} <button onclick="location.href='/review/write'">리뷰 쓰기</button ></p>
-                        <p>영업시간 :
+                        
+
+                        <p><img class="reviewbtn" src="/static/image/review.png">리뷰 :
+                            {{studycafe.review}} </p>
+                        <button onclick="location.href='/review/write'">리뷰 쓰기</button ><button onclick="location.href='/review/list'">리뷰 보기</button ><button onclick="location.href='/blog/'" >스터디 현황</button >
+                        <hr>
+                        
+                        <p><img class="timebtn" src="/static/image/time.png"></img>
                             {{studycafe.time}}</p>
-                        <p>전화번호 :
-                            {{studycafe.phone_number}}</p>
+                        <p><img class="phonebtn" src="/static/image/phone.png"></img> {{studycafe.phone_number}}</p>
 
                         {% for hashtag in hashtags %}
                             {%if studycafe.id is hashtag.sca_id%}
@@ -60,8 +72,10 @@
 
                             {%endif%}
                         {%endfor%}
-                        <p>찜 :
-                            {{studycafe.sca_like}}</p>
+                        {% comment %} <p>찜 :
+                            {{studycafe.sca_like}}</p> {% endcomment %}
+                        
+                        <p style="font-weight: bold"><img class="mapbtn" src="/static/image/map.png"></img><a onclick="location.href='/scamap/{{studycafe.id}}/'">스터디카페 위치 확인</a></p>
                     </div>
                     <p></p>
                 </div>

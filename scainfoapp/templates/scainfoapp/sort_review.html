@@ -38,11 +38,11 @@
                             <form method='post' action=''>
                                 {% csrf_token %}
                                 <input type="hidden" name="like_button" value="{{sca.id}}">
-                                <span><button class="likebtn" type="submit">찜</button></span>
+                                <span><button class="likebtn" type="submit">찜하기</button></span>
                             </form> </div> </h4>
                         <p>{{sca.address}}</p>
-                        <p>별점 :
-                            {{sca.star_rating}}</p>
+                        {% comment %} <p>별점 :
+                            {{sca.star_rating}}</p> {% endcomment %}
 
                         {%load mathfilters%}
                         <div class="star-ratings">
@@ -56,11 +56,13 @@
                         </div>
 
                         <p>리뷰 :
-                            {{sca.review}} <button onclick="location.href='/review/write'">리뷰 쓰기</button ></p>
-                        <p>영업시간 :
+                            {{sca.review}} 
+                            {% comment %} <button onclick="location.href='/review/write'">리뷰 쓰기</button > {% endcomment %}
+                            </p>
+                        {% comment %} <p>영업시간 :
                             {{sca.time}}</p>
                         <p>전화번호 :
-                            {{sca.phone_number}}</p>
+                            {{sca.phone_number}}</p> {% endcomment %}
 
                         {% for hashtag in hashtags %}
                             {%if sca.id is hashtag.sca_id%}
@@ -69,8 +71,8 @@
 
                             {%endif%}
                         {%endfor%}
-                        <p>찜 :
-                            {{sca.sca_like}}</p>
+                        {% comment %} <p>찜 :
+                            {{sca.sca_like}}</p> {% endcomment %}
                     </div>
                     <p></p>
                 </div>

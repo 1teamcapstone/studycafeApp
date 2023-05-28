@@ -11,32 +11,33 @@
         <div class="home">
         <a href="/"><img class="homebtn" src="/static/images/homebtn.png"/></a></div>
         <h2 style="text-align: center;">스터디카페 목록</h2>
+        
         <div class="sort" align="right">
             <select title="" onchange="window.location.href=this.value">
-                <option value="http://127.0.0.1:8000/scainfo/all/" selected>기본 순</option>
-                <option value="http://127.0.0.1:8000/scainfo/hashtag/result_sort_star/">별점 순</option>
+                <option value="http://127.0.0.1:8000/scainfo/all/">기본 순</option>                
+                <option value="http://127.0.0.1:8000/scainfo/sort_star/" selected>별점 순</option>
                 <option value="http://127.0.0.1:8000/scainfo/sort_review/">리뷰 많은 순</option>
             </select>
         </div>
+
         <div class="tag" align="left">
         <form method='post' action='{% url 'hashtag' %}'>
             {% csrf_token %}
-            <input type="text" name="search_button" value="{{keyword}}" style="width:300px; background-color: rgb(242, 242, 242)" onfocus="this.placeholder=''" onblur="this.placeholder='관련 해시태그 검색'">
+            <input type="text" name="search_button" placeholder="관련 해시태그 검색 (ex) #노트북존" style="width:300px; background-color: rgb(242, 242, 242)" onfocus="this.placeholder=''" onblur="this.placeholder='관련 해시태그 검색'">
             <button class="btn btn-primary" type="submit">검색</button>
         </form>
         <p></p>
     </div>
 
         <div class="container">
-            {% for sca in studycafes %}
+            {% for sca in posts %}
                 <div class="card">
                     <div class="card-body" onclick="location.href='/scainfo/detail/{{sca.id}}'">
-                        {% comment %} <p>{{sca.id}}</p> {% endcomment %}
                         <h4 class="card-title">{{sca.name}}<div class="like" align="right">
                             <form method='post' action=''>
                                 {% csrf_token %}
                                 <input type="hidden" name="like_button" value="{{sca.id}}">
-                                <span><button class="likebtn" type="submit">찜하기</button></span>
+                                <span><button class="likebtn" type="submit">찜</button></span>
                             </form> </div> </h4>
                         <p>{{sca.address}}</p>
                         {% comment %} <p>별점 :
@@ -76,40 +77,22 @@
                 </div>
                 <br></br>
             {%endfor%}
-            {% comment %} <div>  
-            {% if posts.has_previous %}
-                <a class="page-link" data-page="?page=1" href="javascript: void(0)">맨 앞</a>
-                <a class="page-link" data-page="{{posts.previous_page_number}}" href="javascript: void(0)">이전</a>
-            {% endif %}
-            <span>{{posts.number}}</span>
-            <span>/</span>
-            <span>{{posts.paginator.num_pages}}</span>
-            {% if posts.has_next %}
-                <a class="page-link" data-page="{{posts.next_page_number}}" href="javascript: void(0)">다음</a>
-                <a class="page-link" data-page="{{posts.paginator.num_pages}}" href="javascript: void(0)">맨 뒤</a>
-            {% endif %}
-            </div> {% endcomment %}
-
-            {% comment %} <form id="searchForm" method="get" action='{% url 'hashtag' %}'>
-                <input type="hidden" id="kw" name="kw" value="{{kw|default_if_none:''}}">
-                <input type="hidden" id="page" name="page" value="{{page}}">
-            </form> {% endcomment %}
-</div>
-{% comment %} <script type='text/javascript'>
-    const page_elements=document.getElementByClassName("page-link");
-    Array.form(page_elements).forEach(function(element){
-        element.addEventListener('click', function(){
-            document.getElementById('page').value=this.dataset.page;
-            document.getElementById('searchForm').submit();
-        });
-    });
-    const btn_search=document.getElementById("btn_search");
-    btn_search.addEventListener('click', function(){
-        document.getElementById('kw').value=document.getElementById('search_kw').value;
-        document.getElementById('page').value=1;
-        document.getElementById('searchForm').submit();
-    });
-
-</script> {% endcomment %}
-</body>
-</html>
+            <p></p>
+            <div style="text-align: center;">
+                        
+                {% if posts.has_previous %}
+                    <a href="?page=1" style="text-decoration: none; color: black;">First | </a>
+                    <a href="?page={{posts.previous_page_number}}" style="text-decoration: none; color: black;">Prev </a>
+                {% endif %}
+                <span> [ {{posts.number}}</span>
+                <span>/</span>
+                <span>{{posts.paginator.num_pages}} ] </span>
+                {% if posts.has_next %}
+                    <a href="?page={{posts.next_page_number}}" style="text-decoration: none; color: black;"> Next </a>
+                    <a href="?page={{posts.paginator.num_pages}}" style="text-decoration: none; color: black;">| Last</a>
+                {% endif %}
+                </div>
+                    </div>
+                    <p></p>
+                </body>
+            </html>

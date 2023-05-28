@@ -30,7 +30,7 @@ urlpatterns = [
     path('board/', include('board.urls')),
     #path('map/',cafemapapp.views.map, name='map'),
     path('study/',cafemapapp.views.study, name='study'),
-    path('scamap/',cafemapapp.views.studycafe_view, name='studycafe_view'),
+    path('scamap/',include('cafemapapp.urls')),
     #path('sca/',include('cafemapapp.urls')),
     path('scainfo/',include('scainfoapp.urls')),
     path('area/', area.views.area, name='area'),    
