@@ -3,7 +3,7 @@ import json
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse, reverse_lazy
 from .models import Board, User, Comment
-from .forms import BoardForm
+from .forms import BoardForm, CommentForm
 from django.core.paginator import Paginator
 from django.http import Http404, HttpResponseRedirect
 from django.http import HttpResponse
@@ -44,13 +44,17 @@ def board_detail(request, pk):
         raise Http404('해당 게시물을 찾을 수 없습니다.')
     return render(request, 'board_detail.html', {'board' : board})
 
-def comment_create_ajax(request):
-    comment= Comment()
-    comment.body =request.POST.get('body')
-    comment.post = get_object_or_404(Comment, pk=request.POST.get('board_id'))
-    comment.save()
-    
-    ret = {
-        'body': comment.body,
+
+def detail(request, pk):
+    board = Board.objects.get(pk=pk)
+    comment_form = CommentForm()
+    comments = board.comment_set.all()
+    context = {
+        'board': board,
+        'comment_form' : comment_form,
+        'comments' : comments,
     }
-    return HttpResponse(json.dumps(ret), content_type="application/json")
+    return render(request, 'board_detail.html', context)
+
+
+

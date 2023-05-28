@@ -6,7 +6,11 @@ class BoardAdmin(admin.ModelAdmin):
 
 admin.site.register(Board, BoardAdmin)
 
-admin.site.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = (
+        'content',
+        'post',
+    )
 
 
 # Register your models here.

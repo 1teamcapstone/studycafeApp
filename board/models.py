@@ -20,5 +20,5 @@ class Board(models.Model):
         verbose_name_plural = "게시물"
         
 class Comment(models.Model):
-    body = models.CharField(max_length=64, verbose_name="내용")
-    post = models.ForeignKey(Board, on_delete = models.CASCADE, null = True)
+    content = models.CharField(max_length=100, verbose_name='내용')
+   
