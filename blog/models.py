@@ -20,5 +20,11 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def apply_success(self):
+        limit_people = limit_people + 1
+        return int(limit_people)
+        
+        
 
 

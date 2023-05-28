@@ -14,6 +14,36 @@
         <p>시간 | {{ post.start_time|linebreaksbr }}~{{ post.end_time|linebreaksbr }}</p>
         <p>기간 | {{ post.start_date|linebreaksbr }}~{{ post.end_date|linebreaksbr }}</p>
         <p>제한인원 | {{ post.limit_people|linebreaksbr }}</p>
-        <input class = "btn btn-lg text-white" type="submit" value="신청하기" style="background-color: #a69958" onclick="alert('신청완료')">
+        신청인원🧑‍💻<p id="count">  0</p>
+        <script>
+            const plusBtn = document.createElement('button');
+            let plusBtnText = document.createTextNode('신청')
+            plusBtn.style.background= "#a69958";
+            plusBtn.style.color = "#ffffff";
+            plusBtn.style.textAlign = 'center';
+            plusBtn.style.fontSize = '10pt';
+            plusBtn.style.borderColor = 'white';
+            plusBtn.appendChild(plusBtnText);
+        
+            document.body.appendChild(plusBtn);
+
+            let valTag = document.getElementById('count');
+            console.log(valTag.innerHTML);
+            let val = valTag.innerHTML;
+
+            plusBtn.addEventListener("click", clickPlusBtn);
+            function clickPlusBtn(){
+                val++;
+                console.log(val);
+                valTag.innerText=val;
+                alert("신청완료")
+            }
+          
+
+        </script>
           
 {% endblock %}
+
+
+
+
