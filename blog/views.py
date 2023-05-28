@@ -4,6 +4,7 @@ from .models import Post
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import PostForm
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from cafemapapp.models import Studycafes
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
@@ -53,3 +54,11 @@ def post_edit(request, pk):
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
 
+
+def study_view(request,pk):        
+    studycafe=get_object_or_404(Studycafes, id=pk)
+    #print(studycafe.name)
+    study=Post.objects.filter(study_place=studycafe.name).all()
+    #print(study)
+
+    return render(request,'blog/study_view.html',{'studycafe':studycafe, 'study':study})

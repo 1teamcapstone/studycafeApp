@@ -16,24 +16,28 @@
 
         <div class="container">
             {% comment %} {% for sca in posts %} {% endcomment %}
-                <div class="card">
-                    
+                <div class="card">                    
                     <div class="card-body">
                         <div class="imgbox">
                         <img class="scaimg" src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20191218_102%2F1576635755959dX1j9_JPEG%2F9bKVI9kiwzcnLfKPlBcCUSlR.jpg"></img>
                         </div>
                         {% comment %} <p>{{sca.id}}</p> {% endcomment %}
-                        <h3 class="card-title">{{studycafe.name}}</h3><div class="like" align="right">
+                        <div class="card-title">
+                        <h3>{{studycafe.name}}</h3></div>
+
+                        <div class="like">
                             <form method='post' action=''>
                                 {% csrf_token %}
                                 <input type="hidden" name="like_button" value="{{studycafe.id}}">
-                                <span><button class="likebtn" type="submit">찜하기</button></span>
-                            </form> </div> 
-                        </h4>                        
-                        <p>주소 : 
-                            {{studycafe.address}} <a onclick="location.href='/scamap/{{studycafe.id}}/'">위치 확인</a></p>
+                                <span class="lb"><button class="likebtn" type="submit">찜하기</button></span>
+                            </form> </div><div style="clear:both;"></div> 
+                        
+                            
+                        
+                        {% comment %} <div class="address"><p>주소 : 
+                            {{studycafe.address}}</p></div>
                         <p>별점 :
-                            {{studycafe.star_rating}}</p>
+                            {{studycafe.star_rating}}</p> {% endcomment %}
 
                         {%load mathfilters%}
                         <div class="star-ratings">
@@ -58,7 +62,14 @@
 
                         <p><img class="reviewbtn" src="/static/image/review.png">리뷰 :
                             {{studycafe.review}} </p>
-                        <button onclick="location.href='/review/write'">리뷰 쓰기</button ><button onclick="location.href='/review/list'">리뷰 보기</button ><button onclick="location.href='/blog/'" >스터디 현황</button >
+                        <button onclick="location.href='/review/write'">리뷰 쓰기</button >
+                            <button onclick="location.href='/review/list'">리뷰 보기</button >
+
+                                
+{% comment %} 
+                                <input type="hidden" name="study_button" value="{{studycafe.id}}">
+                                <span><button type="submit">스터디 현황</button>     {% endcomment %}
+                                <button onclick="location.href='/blog/sort/{{studycafe.id}}'" >스터디 현황</button >
                         <hr>
                         
                         <p><img class="timebtn" src="/static/image/time.png"></img>
@@ -68,17 +79,18 @@
                         {% for hashtag in hashtags %}
                             {%if studycafe.id is hashtag.sca_id%}
 
-                                <span>#{{hashtag.name}}</span>
+                                <div class="tag"># {{hashtag.name}}</div>
 
                             {%endif%}
                         {%endfor%}
                         {% comment %} <p>찜 :
                             {{studycafe.sca_like}}</p> {% endcomment %}
-                        
+                        <div style="clear:both;"></div>
                         <p style="font-weight: bold"><img class="mapbtn" src="/static/image/map.png"></img><a onclick="location.href='/scamap/{{studycafe.id}}/'">스터디카페 위치 확인</a></p>
                     </div>
                     <p></p>
                 </div>
+        </div>
                 <br></br>
             <p></p>
             

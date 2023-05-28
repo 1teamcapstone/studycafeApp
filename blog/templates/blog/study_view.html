@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+    {% block content %}
+        {% for post in study %}
+            <div class="post">
+                <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+                <p>장소 | {{ post.study_place|linebreaksbr }}</p>
+                <p>날짜 | {{ post.study_day|linebreaksbr }}</p>
+                <p>시간 | {{ post.start_time|linebreaksbr }}~{{ post.end_time|linebreaksbr }}</p>
+                <p>제한인원 | {{ post.limit_people|linebreaksbr }}</p>
+                <div class="date">
+                    {{ post.published_date }}
+                </div>
+            </div>
+        {% endfor %}
+
+    {% endblock %}

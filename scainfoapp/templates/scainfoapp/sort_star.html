@@ -33,12 +33,14 @@
             {% for sca in posts %}
                 <div class="card">
                     <div class="card-body" onclick="location.href='/scainfo/detail/{{sca.id}}'">
-                        <h4 class="card-title">{{sca.name}}<div class="like" align="right">
+                        <h4 class="card-title">{{sca.name}} </h4><div class="like" align="right">
                             <form method='post' action=''>
                                 {% csrf_token %}
                                 <input type="hidden" name="like_button" value="{{sca.id}}">
                                 <span><button class="likebtn" type="submit">찜하기</button></span>
-                            </form> </div> </h4>
+                            </form> </div><div style="clear:both;"></div>
+                                             
+                        
                         <p>{{sca.address}}</p>
                         {% comment %} <p>별점 :
                             {{sca.star_rating}}</p> {% endcomment %}
