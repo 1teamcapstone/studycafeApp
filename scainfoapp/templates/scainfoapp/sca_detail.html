@@ -54,17 +54,16 @@
                         </div>
                                                                      
                         
-                        <p><img class="locationbtn" src="/static/image/location.png"></img> 
-                            {{studycafe.address}} </p>
+                        <p><img class="locationbtn" src="/static/image/location.png"></img>     {{studycafe.address}} </p>
                         {% comment %} <p>별점 :
                             {{studycafe.star_rating}}</p> {% endcomment %}
 
                         
 
-                        <p><img class="reviewbtn" src="/static/image/review.png">리뷰 :
+                        <p><img class="reviewbtn" src="/static/image/review.png">카카오맵 리뷰 수 :
                             {{studycafe.review}} </p>
                         <button onclick="location.href='/review/write/{{studycafe.id}}'">리뷰 쓰기</button >
-                            <button onclick="location.href='/review/list/{{studycafe.id}}'">리뷰 보기</button >
+                            <button onclick="location.href='/review/list/{{studycafe.id}}'">scaconnect 사용자 리뷰 보기</button >
 
                                 
 {% comment %} 
@@ -73,21 +72,30 @@
                                 <button onclick="location.href='/blog/sort/{{studycafe.id}}'" >스터디 현황</button >
                         <hr>
                         
-                        <p><img class="timebtn" src="/static/image/time.png"></img>
-                            {{studycafe.time}}</p>
-                        <p><img class="phonebtn" src="/static/image/phone.png"></img> {{studycafe.phone_number}}</p>
-
+                        
+                        <h4><img class="reviewbtn" src="/static/image/feature.png">     주요 시설</h4>
+                        <div class="tag">
                         {% for hashtag in hashtags %}
                             {%if studycafe.id is hashtag.sca_id%}
-
-                                <div class="tag"># {{hashtag.name}}</div>
-
+                                <div class="tag-img"><img src="{{hashtag.icon}}" style="width: 105px;"></div>
+                                
                             {%endif%}
                         {%endfor%}
+                        <div style="clear:both;"></div>
+                        {% for hashtag in hashtags %}
+                            {%if studycafe.id is hashtag.sca_id%}
+                                <div class="tag-name"># {{hashtag.name}}</div>
+                                
+                            {%endif%}
+                        {%endfor%}
+                    </div><div style="clear:both;"></div>
+                    <p><img class="timebtn" src="/static/image/time.png"></img>
+                            {{studycafe.time}}</p>
+                        <p><img class="phonebtn" src="/static/image/phone.png"></img> {{studycafe.phone_number}}</p>
                         {% comment %} <p>찜 :
                             {{studycafe.sca_like}}</p> {% endcomment %}
-                        <div style="clear:both;"></div>
-                        <p style="font-weight: bold"><img class="mapbtn" src="/static/image/map.png"></img><a onclick="location.href='/scamap/{{studycafe.id}}/'">스터디카페 위치 확인</a></p>
+                        
+                        <p style="font-weight: bold"><img class="mapbtn" src="/static/image/map.png"></img><a onclick="location.href='/scamap/{{studycafe.id}}/'">  스터디카페 위치 확인</a></p>
                     </div>
                     <p></p>
                 </div>

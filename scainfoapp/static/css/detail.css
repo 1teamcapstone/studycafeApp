@@ -3,13 +3,21 @@
 * {
   font-family: 'Noto Sans KR', sans-serif;;
 }
-
 .tag{
+  height: 100px;
+}
+.tag-img{
+  width: 110px; 
+  margin-right: 30px;
+  float: left;
+}
+.tag-name{
   width: 110px;
   height: 40px;
   background-color: #D9D1C7;
   border-radius: 20px;  
-  margin-right: 15px;
+  margin-right: 30px;
+  margin-bottom: 0;
   text-align : center;
   line-height : 40px;
   float: left;
