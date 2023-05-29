@@ -22,7 +22,7 @@
         <div class = "row mt-5" style="display: flex; justify-content: center;">
             <div class = "col-10">   
                 <table class = "table table-hover">
-                    <thead class="table text-white" style="background-color: #734A32">
+                    <thead class="table" style="background-color: #D9D1C7; color: black;">
                         <tr>
                         <th>번호</th>
                         <th>제목</th>
@@ -30,13 +30,13 @@
                         <th>작성시간</th>
                         </tr>
                     </thead>
-                    <tbody class = "text-dark">
+                    <tbody class = "text-black-50">
                         {% for board in boards %}
                         <tr onclick = "location.href = '/board/detail/{{board.id}}'">
-                            <th>{{board.id}}</th>
-                            <th>{{board.title}}</th>
-                            <th>{{board.writer}}</th>
-                            <th>{{board.registered_date}}</th>
+                        <th>{{board.id}}</th>
+                        <th>{{board.title}}</th>
+                        <th>{{board.writer}}</th>
+                        <th>{{board.registered_date}}</th>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -49,7 +49,7 @@
                     <ul class = "pagination justify-content-center">
                         {% if boards.has_previous %}
                             <li class = "page-item">
-                                <a class = "page-link" href = "?p={{boards.previous_page_number}}">이전으로</a>
+                                <a class = "page-link" href = "?p={{boards.previous_page_number}}" style="color: black;">이전으로</a>
                             </li>
                         {% else %}
                             <li class = "page-item disabled">
@@ -58,12 +58,12 @@
                         {% endif %}
         
                         <li class = "page-item active">
-                            <a class = "page-link" style="background-color: #734A32; border:none">{{boards.number}}/{{boards.paginator.num_pages}}</a>
+                            <a class = "page-link" style="background-color: #D9D1C7; color: black; border:none">{{boards.number}}/{{boards.paginator.num_pages}}</a>
                         </li>
         
                         {% if boards.has_next %}
                             <li class = "page-item">
-                                <a class = "page-link" href = "?p={{boards.next_page_number}}">다음으로</a>
+                                <a class = "page-link" href = "?p={{boards.next_page_number}}" style="color: black;">다음으로</a>
                             </li>
                         {% else %}
                             <li class = "page-item disabled">
@@ -76,7 +76,7 @@
         </div>
         <div class = "row">
             <div class = "col-12" style="display: flex; justify-content: center; margin-top: 50px;">
-                <button class="btn text-white" style="background-color: #734A32;" onclick = "location.href = '/board/write/'">글쓰기</button>
+                <button class="btn" style="background-color: #D9D1C7; color: black;" onclick = "location.href = '/board/write/'">글쓰기</button>
             </div>
         </div>
     </div>

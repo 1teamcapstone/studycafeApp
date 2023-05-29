@@ -49,7 +49,7 @@
                     <ul class = "pagination justify-content-center">
                         {% if boards.has_previous %}
                             <li class = "page-item">
-                                <a class = "page-link" href = "?p={{reviews.previous_page_number}}">이전으로</a>
+                                <a class = "page-link" href = "?p={{reviews.previous_page_number}}" style="color: black;>이전으로</a>
                             </li>
                         {% else %}
                             <li class = "page-item disabled">
@@ -63,7 +63,7 @@
         
                         {% if reviews.has_next %}
                             <li class = "page-item">
-                                <a class = "page-link" href = "?p={{reviews.next_page_number}}">다음으로</a>
+                                <a class = "page-link" href = "?p={{reviews.next_page_number}}" style="color: black;">다음으로</a>
                             </li>
                         {% else %}
                             <li class = "page-item disabled">
