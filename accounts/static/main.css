@@ -120,6 +120,41 @@ section #text span {
 }
 
 .sec {
+    position: relative;
+    padding: 100px;
+    background: #324028; /* var(--primary); */
+}
+
+.ment {
+    text-align: center;
+    color: white;
+}
+
+.cardlist {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    width: 18rem;
+    text-decoration: none;
+}
+
+.card-text {
+    font-size: 1em;
+    color: black !important;
+}
+
+
+
+
+
+
+
+
+
+/* .sec {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -132,4 +167,4 @@ section #text span {
     justify-content: center;
     align-items: center;
     text-align: center;
-}
+} */
