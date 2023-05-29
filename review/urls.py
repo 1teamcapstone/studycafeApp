@@ -5,7 +5,6 @@ import review
 app_name="review"
 
 urlpatterns = [
-    path('list/', views.review_list),
-    path('write/', views.review_write),
-    
+    path('list/<int:pk>/', views.review_list),
+    path('write/<int:pk>/', views.review_write),
 ]
