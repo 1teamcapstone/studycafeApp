@@ -29,7 +29,7 @@ urlpatterns = [
     path('userlocation/', include('userlocation.urls')),
     path('board/', include('board.urls')),
     #path('map/',cafemapapp.views.map, name='map'),
-    path('study/',cafemapapp.views.study, name='study'),
+    #path('study/',cafemapapp.views.study, name='study'),
     path('scamap/',include('cafemapapp.urls')),
     #path('sca/',include('cafemapapp.urls')),
     path('scainfo/',include('scainfoapp.urls')),
