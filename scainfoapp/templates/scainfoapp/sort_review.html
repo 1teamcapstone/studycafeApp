@@ -13,24 +13,29 @@
         <div class="home">
         <a href="/"><img class="homebtn" src="/static/images/homebtn.png"/></a></div>
         <h2 style="text-align: center;">스터디카페 목록</h2>
-        
-        <div class="sort" align="right">
-            <select title="" onchange="window.location.href=this.value">
-                <option id="a" value="/scainfo/all">기본 순</option>
-                <option id="b" value="/scainfo/sort_star">별점 순</option>
-                <option id="c" value="/scainfo/sort_review" selected>리뷰 많은 순</option>
-            </select>
+        <div class="mapview" align="right">
+            <button class="mapbtn" onclick="location.href='/scamap/'">지도로 보기</button >
         </div>
+        <div class="midbar">
+            <div class="sort" align="right">
+                <select title="" onchange="window.location.href=this.value">
+                    <option id="a" value="/scainfo/all">기본 순</option>
+                    <option id="b" value="/scainfo/sort_star">별점 순</option>
+                    <option id="c" value="/scainfo/sort_review" selected>리뷰 많은 순</option>
+                </select>
+            </div>
 
-        <div class="tag" align="left">
-        <form method='post' action='{% url 'hashtag' %}'>
-            {% csrf_token %}
-            <input type="text" class ="btn" name="search_button" placeholder="관련 해시태그 검색 (ex) #노트북존" style="width:300px; background-color: rgb(242, 242, 242); border: 1px solid #DDDDDD;" onfocus="this.placeholder=''" onblur="this.placeholder='관련 해시태그 검색'">
-            <button class="btn text-white" style="background-color:#324028;" type="submit">검색</button>
-        
-        </form>
-        <p></p>
-    </div>
+            <div class="tag">
+            <form method='post' action='{% url 'hashtag' %}'>
+                {% csrf_token %}
+                <input type="text" class ="btn" name="search_button" placeholder="관련 해시태그 검색 (ex) #노트북존" style="width:300px; background-color: rgb(242, 242, 242); border: 1px solid #DDDDDD;" onfocus="this.placeholder=''" onblur="this.placeholder='관련 해시태그 검색'">
+                <button class="btn text-white" style="background-color:#324028;" type="submit">검색</button>
+            
+            </form>
+            <p></p>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
 
         <div class="container">
             {% for sca in posts %}
@@ -83,7 +88,7 @@
                     </div>
                     <p></p>
                 </div>
-                <br></br>
+                <br>
             {%endfor%}
             <p></p>
             <div style="text-align: center;">

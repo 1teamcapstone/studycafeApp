@@ -13,6 +13,8 @@
         <div class="home">
         <a href="/"><img class="homebtn" src="/static/images/homebtn.png"/></a></div>
         <h2 style="text-align: center;">스터디카페 목록</h2>
+
+        <div class="midbar">
         <div class="sort" align="right">
             <form method='post' action='{% url 'hashtag' %}'>
                 {% csrf_token %}
@@ -37,6 +39,8 @@
           
         </form>
         <p></p>
+        </div>
+        <div style="clear:both;"></div>
     </div>
 
         <div class="container">

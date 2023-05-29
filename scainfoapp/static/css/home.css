@@ -17,10 +17,32 @@
 
 h2 { text-align: center; }
 
+.mapview{  
+  width: 650px;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.mapbtn{
+  width: 125px;
+  height: 45px;  
+  border: #734A32 solid;
+  background-color: #734A32;
+  color:#fff;
+}
+
+.midbar{
+  width: 650px;
+  margin: auto;
+  margin-top: 20px;
+}
+
 select{
+  height: 38px;
   text-align-last: center;
   text-align: center;
-  background-color: rgb(242, 242, 242)
+  background-color: rgb(242, 242, 242);
+  /* float: right; */
 }
 
 .likebtn{
@@ -44,13 +66,20 @@ select{
 }
 
 .sort {
-  width: 650px;
+  height: 67px;
+  margin: auto;
+  float: right;
+}
+
+.sbox{
+  height: 2px;  
   margin: auto;
 }
 
 .tag{
-  width: 650px;
+  /* width: 650px; */
   margin: auto;
+  float: left;
 }
 .card-title{
   margin-top: 0;
