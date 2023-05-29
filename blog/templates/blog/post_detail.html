@@ -1,5 +1,5 @@
 {% extends 'blog/base.html' %}
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 {% block content %}
     <div class="post">
         {% comment %} # 추가 {% endcomment %}
@@ -27,21 +27,14 @@
         <p>기간 | {{ post.start_date|linebreaksbr }}~{{ post.end_date|linebreaksbr }}</p>
         <p>세부정보 | {{ post.text|linebreaksbr }}</p>
         <p>제한인원 | {{ post.limit_people|linebreaksbr }}</p>
-        <p><span>신청인원 | <span id="count"> 0</span></p>
+        <p><span>신청인원 | <span id="count"> 0</span> &nbsp;&nbsp;    <button id="apply" class="btn text-white" style="background-color: #734A32;" > 신청 </button></p>
+        
 
         <script>
 
-            const plusBtn = document.createElement('button');
-            let plusBtnText = document.createTextNode('신청')
-            plusBtn.style.background= "#a69958";
-            plusBtn.style.color = "#ffffff";
-            plusBtn.style.textAlign = 'center';
+            const plusBtn = document.getElementById('apply');
             plusBtn.style.fontSize = '12pt';
-
-            plusBtn.appendChild(plusBtnText);
-        
-            document.body.appendChild(plusBtn);
-
+           
             let valTag = document.getElementById('count');
             console.log(valTag.innerHTML);
             let val = valTag.innerHTML;
