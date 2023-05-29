@@ -3,7 +3,8 @@
 {% block content %}
     <h1>스터디 등록</h1>
     <hr>
-    <form method="POST" class="post-form">{% csrf_token %}
+    <form method="POST" class="post-form">
+        {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="save btn btn-lg text-white" style="background-color: #a69958;">등록하기</button>
     </form>

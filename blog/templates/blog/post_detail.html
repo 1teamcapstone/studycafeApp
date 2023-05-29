@@ -2,13 +2,25 @@
 
 {% block content %}
     <div class="post">
+        {% comment %} # 추가 {% endcomment %}
+        {% if messages %}
+        <div class = "alert alert-danger post" role="alert">
+            {% for message in messages%}
+            <strong>{{ message.tags }}</strong>
+            <ul><li>{{ message.messages }}</li></ul>
+            {% endfor %}
+        </div>
+        {% endif %}
+
         {% if post.published_date %}
             <div class="date">
                 {{ post.published_date }}
             </div>
         {% endif %}
-        <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
         <h1>{{ post.title }}</h1>
+        <h5>글쓴이: {{ post.author }}</h5>
+        <hr>
         <p>장소 | {{ post.study_place|linebreaksbr }}</p>
         <p>날짜 | {{ post.study_day|linebreaksbr }}</p>
         <p>시간 | {{ post.start_time|linebreaksbr }}~{{ post.end_time|linebreaksbr }}</p>

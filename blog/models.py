@@ -1,9 +1,12 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
+from accounts.models import User
+from django.urls import reverse
 
 class Post(models.Model):
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    # author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    author = models.ForeignKey('accounts.User', on_delete=models.CASCADE)
     published_date = models.DateField(default=timezone.now)
     title = models.CharField(max_length=30)
     study_place = models.CharField(max_length=30)
