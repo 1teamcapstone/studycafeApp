@@ -30,7 +30,9 @@
                             <form method='post' action=''>
                                 {% csrf_token %}
                                 <input type="hidden" name="like_button" value="{{studycafe.id}}">
-                                <span><button id="likebtn" style= "background-color:transparent; border: none;" class="likebtn" type="submit" onclick="btn()">❤️</button></span>
+                                <span><button id="likebtn" class="likebtn" style="border:none;"
+                                    type="submit" onclick="btn()"><img class="heartbtn" src="/static/image/heart.png" style="width:30px; height:30px;
+                                    margin-top:10px;"></img></button></span>
                             </form> </div><div style="clear:both;"></div> 
                         
                             
@@ -62,14 +64,16 @@
 
                         <p><img class="reviewbtn" src="/static/image/review.png">카카오맵 리뷰 수 :
                             {{studycafe.review}} </p>
-                        <button onclick="location.href='/review/write/{{studycafe.id}}'">리뷰 쓰기</button >
-                            <button onclick="location.href='/review/list/{{studycafe.id}}'">scaconnect 사용자 리뷰 보기</button >
+                        <button onclick="location.href='/review/write/{{studycafe.id}}'" style="background-color:#D9D1C7; 
+                        border: 2px solid #D9D1C7; border-radius:5px;" >리뷰 쓰기</button >&nbsp; &nbsp;
+                            <button onclick="location.href='/review/list/{{studycafe.id}}'"style="background-color:#D9D1C7; 
+                            border: 2px solid #D9D1C7; border-radius:5px;">scaconnect 사용자 리뷰 보기</button > &nbsp; &nbsp;
 
                                 
 {% comment %} 
                                 <input type="hidden" name="study_button" value="{{studycafe.id}}">
                                 <span><button type="submit">스터디 현황</button>     {% endcomment %}
-                                <button onclick="location.href='/blog/sort/{{studycafe.id}}'" >스터디 현황</button >
+                                <button onclick="location.href='/blog/sort/{{studycafe.id}}'" style="background-color:#D9D1C7; border: 2px solid #D9D1C7; border-radius:5px;">스터디 현황</button >
                         <hr>
                         
                         
@@ -77,7 +81,7 @@
                         <div class="tag">
                         {% for hashtag in hashtags %}
                             {%if studycafe.id is hashtag.sca_id%}
-                                <div class="tag-img"><img src="{{hashtag.icon}}" style="width: 105px;"></div>
+                                <div class="tag-img"><img src="{{hashtag.icon}}" style="width: 70px; height:70px; margin-left:20px;"></div>
                                 
                             {%endif%}
                         {%endfor%}

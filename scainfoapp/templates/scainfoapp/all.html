@@ -41,7 +41,9 @@
                             <form method='post' action=''>
                                 {% csrf_token %}
                                 <input type="hidden" name="like_button" value="{{sca.id}}">
-                                <span><button id="likebtn" style= "background-color:transparent; border: none;" class="likebtn" type="submit" onclick="btn()">❤️</button></span>
+                                <span><button id="likebtn" class="likebtn" style="border:none;"
+                                    type="submit" onclick="btn()"><img class="heartbtn" src="/static/image/heart.png" style="width:30px; height:30px;
+                                    margin-top:10px;"></img></button></span>
                             </form> </div> 
                             <div style="clear:both;"></div>
                                              
