@@ -120,18 +120,20 @@ section #text span {
 }
 
 .sec {
-    position: relative;
-    padding: 100px;
-    background: #324028; /* var(--primary); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.sec h2 {
-    font-size: 3.5em;
-    color: #fff;
-    margin-bottom: 10px;
+.card {
+    width: 18rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .sec p {
-    font-size: 1em;
-    color: #fff;
+    color: black !important;
 }
