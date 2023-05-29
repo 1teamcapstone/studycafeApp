@@ -132,6 +132,22 @@ class Hashtags(models.Model):
         db_table = 'hashtags'
 
 
+class Search(models.Model):
+    keyword = models.CharField(max_length=50, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'search'
+
+
+class Sort(models.Model):
+    sort = models.CharField(max_length=50, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'sort'
+
+
 class Studycafes(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
     address = models.CharField(max_length=255, blank=True, null=True)

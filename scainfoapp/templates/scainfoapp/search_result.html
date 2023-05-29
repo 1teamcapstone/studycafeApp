@@ -13,11 +13,16 @@
         <a href="/"><img class="homebtn" src="/static/images/homebtn.png"/></a></div>
         <h2 style="text-align: center;">스터디카페 목록</h2>
         <div class="sort" align="right">
-            <select title="" onchange="window.location.href=this.value">
-                <option value="http://127.0.0.1:8000/scainfo/all/" selected>기본 순</option>
-                <option value="http://127.0.0.1:8000/scainfo/hashtag/result_sort_star/">별점 순</option>
-                <option value="http://127.0.0.1:8000/scainfo/sort_review/">리뷰 많은 순</option>
+            <form method='post' action='{% url 'hashtag' %}'>
+                {% csrf_token %}
+                <select title="" name="sort_button" onchange="this.form.submit()" onclick='selectedControl()'>
+                <option value="1">기본 순</option>
+                <option value="2">별점 순</option>
+                <option value="3">리뷰 많은 순</option>
             </select>
+            {% comment %} <button class="btn btn-primary" type="submit">검색</button> {% endcomment %}
+            </form>
+            
         </div>
         <div class="tag" align="left">
         <form method='post' action='{% url 'hashtag' %}'>
@@ -29,7 +34,7 @@
     </div>
 
         <div class="container">
-            {% for sca in studycafes %}
+            {% for sca in posts %}
                 <div class="card">
                     <div class="card-body" onclick="location.href='/scainfo/detail/{{sca.id}}'">
                         {% comment %} <p>{{sca.id}}</p> {% endcomment %}
@@ -79,19 +84,23 @@
                 </div>
                 <br></br>
             {%endfor%}
-            {% comment %} <div>  
-            {% if posts.has_previous %}
-                <a class="page-link" data-page="?page=1" href="javascript: void(0)">맨 앞</a>
-                <a class="page-link" data-page="{{posts.previous_page_number}}" href="javascript: void(0)">이전</a>
-            {% endif %}
-            <span>{{posts.number}}</span>
-            <span>/</span>
-            <span>{{posts.paginator.num_pages}}</span>
-            {% if posts.has_next %}
-                <a class="page-link" data-page="{{posts.next_page_number}}" href="javascript: void(0)">다음</a>
-                <a class="page-link" data-page="{{posts.paginator.num_pages}}" href="javascript: void(0)">맨 뒤</a>
-            {% endif %}
-            </div> {% endcomment %}
+            <p></p>
+                        <div style="text-align: center;">
+                        
+                        {% if posts.has_previous %}
+                            <a href="?page=1" style="text-decoration: none; color: black;">First | </a>
+                            <a href="?page={{posts.previous_page_number}}" style="text-decoration: none; color: black;">Prev </a>
+                        {% endif %}
+                        <span> [ {{posts.number}}</span>
+                        <span>/</span>
+                        <span>{{posts.paginator.num_pages}} ] </span>
+                        {% if posts.has_next %}
+                            <a href="?page={{posts.next_page_number}}" style="text-decoration: none; color: black;"> Next </a>
+                            <a href="?page={{posts.paginator.num_pages}}" style="text-decoration: none; color: black;">| Last</a>
+                        {% endif %}
+                        </div>
+                    </div>
+                    <p></p>
 
             {% comment %} <form id="searchForm" method="get" action='{% url 'hashtag' %}'>
                 <input type="hidden" id="kw" name="kw" value="{{kw|default_if_none:''}}">
