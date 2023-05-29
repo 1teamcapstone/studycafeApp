@@ -9,7 +9,7 @@
                 left: 0;
                 width: 100%;
                 background-color: white;
-                color: #D9D1C7;
+                color: #324028;
                 padding: 10px;
                 z-index: 9999;
                 height: 70px;
@@ -20,23 +20,23 @@
     </div>
     <div class="container" style="margin-top: 150px;">
         <div class = "row mt-5" style="display: flex; justify-content: center;">
-            <div class = "col-10">
+            <div class = "col-8">  
                 <table class = "table table-hover">
-                    <thead class="table text-white" style="background-color: #D9D1C7">
+                    <thead class="table" style="background-color: #D9D1C7; color: black;">
                         <tr>
-                        <th>번호</th>
+                        <!-- <th>번호</th> -->
                         <th>작성자</th>
                         <th>리뷰내용</th>
                         <th>작성시간</th>
                         </tr>
                     </thead>
-                    <tbody class = "text-dark">
+                    <tbody class = "text-black-50">
                         {% for review in reviews %}
-                        <tr onclick = "location.href = '/review/detail/{{review.id}}'">
-                            <th>{{review.id}}</th>
-                            <th>{{review.writer}}</th>
-                            <th>{{review.contents}}</th>
-                            <th>{{review.registered_date}}</th>
+                        <tr>
+                        <!-- <th>{{review.id}}</th> -->
+                        <th>{{review.writer}}</th>
+                        <th>{{review.contents}}</th>
+                        <th>{{review.registered_date}}</th>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -58,7 +58,7 @@
                         {% endif %}
         
                         <li class = "page-item active">
-                            <a class = "page-link" style="background-color: #D9D1C7; border:none" >{{reviews.number}}/{{reviews.paginator.num_pages}}</a>
+                            <a class = "page-link" style="background-color: #D9D1C7 ; color: black; border:none" >{{reviews.number}}/{{reviews.paginator.num_pages}}</a>
                         </li>
         
                         {% if reviews.has_next %}
@@ -76,7 +76,7 @@
         </div>
         <div class = "row">
             <div class = "col-12" style="display: flex; justify-content: center; margin-top: 50px;">
-                <button class="btn text-white" style="background-color:  #D9D1C7;" onclick = "location.href = '/review/write/{{studycafe.id}}'">리뷰쓰기</button>
+                <button class="btn" style="background-color:  #D9D1C7; color: black;" onclick = "location.href = '/review/write/{{studycafe.id}}'">리뷰쓰기</button>
             </div>
         </div>
     </div>
