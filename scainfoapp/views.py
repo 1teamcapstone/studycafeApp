@@ -217,6 +217,9 @@ def hashtag_view(request):
                 paginator=Paginator(studycafes,5)
                 page=request.GET.get('page')
                 posts=paginator.get_page(page)
+                return render(request,'scainfoapp/has_sort_star.html',{'studycafes':studycafes, 'posts':posts, 'hashtags':hashtags})
+
+                
                 
             elif sort.sort=='3':
                 item=Search.objects.get(pk=1)
@@ -226,7 +229,7 @@ def hashtag_view(request):
                 paginator=Paginator(studycafes,5)
                 page=request.GET.get('page')
                 posts=paginator.get_page(page)
-                 
+                return render(request,'scainfoapp/has_sort_review.html',{'studycafes':studycafes, 'posts':posts, 'hashtags':hashtags})
             
             else: 
                 return redirect('/scainfo/all/')
