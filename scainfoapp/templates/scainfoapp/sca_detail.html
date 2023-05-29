@@ -46,9 +46,8 @@
                         <p style="float: left; margin-top:0;">&nbsp;&nbsp;{{studycafe.address}} </p>
                         
                         <div style="clear:both;"></div>
-                        {%load mathfilters%}
+                        {% comment %} {%load mathfilters%} {% endcomment %}
                         <div class="star-ratings">
-                            {% comment %} &nbsp;&nbsp;<img class="reviewbtn" src="/static/image/review.png"> {% endcomment %}
                             {%load mathfilters%}
                             <div class="star-ratings">    
                                 <div class="star-ratings-fill" style="width:{{studycafe.star_rating|mul:20}}%">
@@ -92,7 +91,7 @@
                         <div style="clear:both;"></div>
 
 
-                        <div class="tag">
+                        <div>
                         {% for hashtag in hashtags %}
                             {%if studycafe.id is hashtag.sca_id%}
                                 <div class="tag-img"><img src="{{hashtag.icon}}" style="width: 70px; height:70px; margin-left:20px;"></div>
@@ -106,7 +105,8 @@
                                 
                             {%endif%}
                         {%endfor%}
-                        </div><div style="clear:both;"></div>
+                        </div>
+                        <div style="clear:both;"></div>
 
                         <div style="margin-top: 35px;">
                             <img class="timebtn" src="/static/image/time.png" style="float: left;"></img>

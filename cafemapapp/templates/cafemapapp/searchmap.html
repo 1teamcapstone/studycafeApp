@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>스터디카페 찾기</title>
+
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <link rel="stylesheet" href='/static/css/studycafeMap.css'>
+    </head>
+    <body>
+        <div class="top-bar">
+            <a href="/"><img class="home-btn" src="/static/home-img.png"></a>        
+            <h2>스터디카페 찾기</h2>
+        </div>
+
+        <div class="container" style="margin-top: 100px;">
+            <div class="studybtn" align="right">
+                <button onclick="location.href='/scainfo/all/'">목록으로 보기</button>
+                {% comment %} <button onclick="location.href='/study/'">개설 스터디 현황</button> {% endcomment %}
+            </div>
+        </div>
+
+        <div id="map"></div>
+
+        <script
+            type="text/javascript"
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e5546ce50e2833e4db42b281b4b23109&libraries=services">
+        </script>
+        <script>
+            var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+                mapOption = {
+                    center: new kakao
+                        .maps
+                        .LatLng(37.32191219571723, 127.12659496708484), // 지도의 중심좌표
+                    level: 4 // 지도의 확대 레벨
+                };
+
+            // 지도를 생성합니다
+            var map = new kakao
+                .maps
+                .Map(mapContainer, mapOption);
+
+            // 주소-좌표 변환 객체를 생성합니다
+            var geocoder1 = new kakao
+                .maps
+                .services
+                .Geocoder();
+
+            // 마커 이미지의 이미지 주소입니다
+            var imageSrc1 = "/static/images/location.png";    
+            
+            // 마커 이미지의 이미지 크기 입니다
+            var imageSize1 = new kakao
+            .maps
+            .Size(65,65);
+
+        // 마커 이미지를 생성합니다
+            var markerImage1 = new kakao
+                .maps
+                .MarkerImage(imageSrc1, imageSize1);
+
+
+            geocoder1.addressSearch("{{location.location}}", function (result1, status1) {
+
+                    // 정상적으로 검색이 완료됐으면
+                    if (status1 === kakao.maps.services.Status.OK) {
+
+                        var coords1 = new kakao
+                            .maps
+                            .LatLng(result1[0].y, result1[0].x);
+
+                        var marker1 = new kakao.maps.Marker({
+                            position: coords1, image: markerImage1
+                        });
+
+                        // 결과값으로 받은 위치를 마커로 표시합니다
+                        
+                        // 마커가 지도 위에 표시되도록 설정합니다
+                        marker1.setMap(map);    
+
+                        map.setCenter(coords1);
+                        
+                    }
+                });
+            
+            
+                            
+
+            var sca = new Array();
+            let sca_dict = {};
+            {% for studycafe in studycafe %}
+                sca_dict = {
+                    'id' : '{{studycafe.id}}',
+                    'name': '{{studycafe.name}}',
+                    'address': '{{studycafe.address}}'
+                };
+                sca.push(sca_dict);
+            {% endfor %}
+
+            // 마커 이미지의 이미지 주소입니다
+            var imageSrc = "/static/images/marker.png";
+
+            // 주소-좌표 변환 객체를 생성합니다
+            var geocoder = new kakao
+                .maps
+                .services
+                .Geocoder();
+
+            sca.forEach(function (scainfo) { //추가한 코드
+                // 주소로 좌표를 검색합니다
+                geocoder.addressSearch(scainfo.address, function (result, status) {
+
+                    // 정상적으로 검색이 완료됐으면
+                    if (status === kakao.maps.services.Status.OK) {
+
+                        var coords = new kakao
+                            .maps
+                            .LatLng(result[0].y, result[0].x);
+
+                        // 마커 이미지의 이미지 크기 입니다
+                        var imageSize = new kakao
+                            .maps
+                            .Size(65,65);
+
+                        // 마커 이미지를 생성합니다
+                        var markerImage = new kakao
+                            .maps
+                            .MarkerImage(imageSrc, imageSize);
+
+                        // 결과값으로 받은 위치를 마커로 표시합니다
+                        var marker = new kakao
+                            .maps
+                            .Marker({map: map, position: coords, title: scainfo.name, image: markerImage});                        
+
+
+                        // 커스텀 오버레이에 표출될 내용
+                        /*var content = '<div class="customoverlay">  <a href="https://map.kakao.com/link/to/{{studycafe.name}},y,x"' +
+                                ' target="_blank">    <span class="title">'+scainfo.name+'</span>  </a></div>';*/
+
+                        //var link='/scainfo/detail/{{sca.id}}'        
+
+                        // 커스텀 오버레이에 표출될 내용
+                        var content = '<div class="customoverlay"> <a href="http://127.0.0.1:8000/scainfo/detail/'+scainfo.id+'/"> '+
+                            ' <span class="title">'+scainfo.name+'</span>  </a></div>';
+
+                            //onclick="location.href='/scainfo/detail/{{sca.id}}'"
+                        // 커스텀 오버레이를 생성합니다
+                        var customOverlay = new kakao
+                            .maps
+                            .CustomOverlay({});
+
+                        kakao.maps.event.addListener(marker, 'click', function(mouseEvent) {
+                                                     
+                            customOverlay.setContent(content);
+                                
+                            customOverlay.setPosition(coords); 
+                            customOverlay.setMap(map);
+                            customOverlay.setyAnchor(1);
+                        });
+                        // 커스텀 오버레이를 지도에서 제거합니다 
+                        kakao.maps.event.addListener(marker, 'rightclick', function() {
+        
+                            customOverlay.setMap(null);
+                        }); 
+                        
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

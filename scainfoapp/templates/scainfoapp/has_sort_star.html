@@ -13,6 +13,13 @@
         <div class="home">
         <a href="/"><img class="homebtn" src="/static/images/homebtn.png"/></a></div>
         <h2 style="text-align: center;">스터디카페 목록</h2>
+        <div class="mapview" align="right">
+            <form method='post' action=''>
+                {% csrf_token %}
+                <input type="hidden" name="map_button" value="map">
+                <span><button class="mapbtn" type="submit" onclick="location.href='/scamap/search'">지도로 보기</button></span>
+            </form>
+        </div>
 
         <div class="midbar">
         <div class="sort" align="right">
@@ -73,22 +80,22 @@
                             </div>
                         </div>
 
-                        <p>카카오맵 리뷰 수 :
-                            {{sca.review}} 
-                            {% comment %} <button onclick="location.href='/review/write'">리뷰 쓰기</button > {% endcomment %}
-                            </p>
+                        <p>&nbsp;&nbsp;카카오맵 리뷰({{sca.review}})</p>
                         {% comment %} <p>영업시간 :
                             {{sca.time}}</p>
                         <p>전화번호 :
                             {{sca.phone_number}}</p> {% endcomment %}
 
-                        {% for hashtag in hashtags %}
-                            {%if sca.id is hashtag.sca_id%}
-
-                                <span>#{{hashtag.name}}</span>
-
-                            {%endif%}
-                        {%endfor%}
+                            <div>
+                                {% for hashtag in hashtags %}
+                                    {%if sca.id is hashtag.sca_id%}
+    
+                                        <div class="tag-name">#{{hashtag.name}}</div>
+    
+                                    {%endif%}
+                                {%endfor%}
+                            </div>
+                            <div style="clear:both;"></div>
                         {% comment %} <p>찜 :
                             {{sca.sca_like}}</p> {% endcomment %}
                     </div>

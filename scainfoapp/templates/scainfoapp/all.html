@@ -77,22 +77,23 @@
                             </div>
                         </div>
 
-                        <p>카카오맵 리뷰 수 :
-                            {{sca.review}} 
+                        <p>&nbsp;&nbsp;카카오맵 리뷰({{sca.review}})</p>
+                             
                             {% comment %} <button onclick="location.href='/review/write'">리뷰 쓰기</button > {% endcomment %}
-                            </p>
+                            
                         {% comment %} <p>영업시간 :
                             {{sca.time}}</p>
                         <p>전화번호 :
                             {{sca.phone_number}}</p> {% endcomment %}
+                        <div>
+                            {% for hashtag in hashtags %}
+                                {%if sca.id is hashtag.sca_id%}
 
-                        {% for hashtag in hashtags %}
-                            {%if sca.id is hashtag.sca_id%}
+                                    <div class="tag-name">#{{hashtag.name}}</div>
 
-                                <span>#{{hashtag.name}}</span>
-
-                            {%endif%}
-                        {%endfor%}
+                                {%endif%}
+                            {%endfor%}
+                        </div>
                         {% comment %} <p>찜 :
                             {{sca.sca_like}}</p> {% endcomment %}
                     </div>

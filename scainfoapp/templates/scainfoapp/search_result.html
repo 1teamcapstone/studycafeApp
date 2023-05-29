@@ -11,56 +11,63 @@
     </head>
     <body>
         <div class="home">
-        <a href="/"><img class="homebtn" src="/static/images/homebtn.png"/></a></div>
+            <a href="/"><img class="homebtn" src="/static/images/homebtn.png"/></a>
+        </div>
         <h2 style="text-align: center;">스터디카페 목록</h2>
+        <div class="mapview" align="right">
+            <form method='post' action=''>
+                {% csrf_token %}
+                <input type="hidden" name="map_button" value="map">
+                <span><button class="mapbtn" type="submit" onclick="location.href='/scamap/search'">지도로 보기</button></span>
+            </form>
+        </div>
 
         <div class="midbar">
-        <div class="sort" align="right">
+            <div class="sort" align="right">
+                <form method='post' action='{% url 'hashtag' %}'>
+                    {% csrf_token %}
+                    <select title="" name="sort_button" onchange="this.form.submit()" id="testSelect">
+
+                        <option id="a" value="1">기본 순</option>
+                        <option id="b" value="2">별점 순</option>
+                        <option id="c" value="3">리뷰 많은 순</option>
+
+                    </select>
+                </form>
+                
+            </div>
+            <div class="tag" align="left">
             <form method='post' action='{% url 'hashtag' %}'>
                 {% csrf_token %}
-                <select title="" name="sort_button" onchange="this.form.submit()" id="testSelect">
-
-                    <option id="a" value="1">기본 순</option>
-                    <option id="b" value="2">별점 순</option>
-                    <option id="c" value="3">리뷰 많은 순</option>
-
-                </select>
-       
-            {% comment %} <button class="btn btn-primary" type="submit">검색</button> {% endcomment %}
+                <input type="text" class ="btn" name="search_button" value="{{keyword}}" style="width:300px; background-color: rgb(242, 242, 242); border: 1px solid #DDDDDD;" onfocus="this.placeholder=''" onblur="this.placeholder='관련 해시태그 검색'">
+                <button class="btn text-white" style="background-color:#324028;" type="submit">검색</button>
             </form>
-            
+            <p></p>
+            </div>
+            <div style="clear:both;"></div>
         </div>
-        <div class="tag" align="left">
-        <form method='post' action='{% url 'hashtag' %}'>
-            {% csrf_token %}
-            <input type="text" class ="btn" name="search_button" value="{{keyword}}" style="width:300px; background-color: rgb(242, 242, 242); border: 1px solid #DDDDDD;" onfocus="this.placeholder=''" onblur="this.placeholder='관련 해시태그 검색'">
-            <button class="btn text-white" style="background-color:#324028;" type="submit">검색</button>
-           
-          
-        </form>
-        <p></p>
-        </div>
-        <div style="clear:both;"></div>
-    </div>
 
         <div class="container">
             {% for sca in posts %}
                 <div class="card" style="border: 2px solid #734A32; border-radius:10px;">
                     <div class="card-body" onclick="location.href='/scainfo/detail/{{sca.id}}'">
                         {% comment %} <p>{{sca.id}}</p> {% endcomment %}
-                        <h4 class="card-title">{{sca.name}} </h4><div class="like">
-                            <form method='post' action=''>
-                                {% csrf_token %}
-                                <input type="hidden" name="like_button" value="{{sca.id}}">
-                                <span><button id="likebtn" style="border:none; background-color:transparent;"
-                                    type="submit" onclick="btn()"><img class="heartbtn" src="/static/image/heart.png" style="width:30px; height:30px;
-                                    margin-top:10px;"></img></button></span>
-                            </form> </div><div style="clear:both;"></div>
+                        <div>
+                            <h4 class="card-title">{{sca.name}} </h4>
+                            <div class="like">
+                                <form method='post' action=''>
+                                    {% csrf_token %}
+                                    <input type="hidden" name="like_button" value="{{sca.id}}">
+                                    <span><button id="likebtn" style="border:none; background-color:transparent;"
+                                        type="submit" onclick="btn()"><img class="heartbtn" src="/static/image/heart.png" style="width:30px; height:30px;
+                                        margin-top:10px;"></img></button></span>
+                                </form>
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
                                              
                         
-                        <p>{{sca.address}}</p>
-                        {% comment %} <p>별점 :
-                            {{sca.star_rating}}</p> {% endcomment %}
+                        <p style="margin-bottom: 10px">{{sca.address}}</p>
 
                         {%load mathfilters%}
                         <div class="star-ratings">
@@ -72,29 +79,27 @@
                                 <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                             </div>
                         </div>
+                        <div style="float: left;">
+                            <p style="margin: auto; margin-bottom: 13px;">&nbsp;&nbsp;카카오맵 리뷰({{sca.review}}) </p>
+                        </div>  
 
-                        <p>카카오맵 리뷰 수 :
-                            {{sca.review}} 
-                            {% comment %} <button onclick="location.href='/review/write'">리뷰 쓰기</button > {% endcomment %}
-                            </p>
-                        {% comment %} <p>영업시간 :
-                            {{sca.time}}</p>
-                        <p>전화번호 :
-                            {{sca.phone_number}}</p> {% endcomment %}
+                        <div style="clear:both;"></div>
 
-                        {% for hashtag in hashtags %}
-                            {%if sca.id is hashtag.sca_id%}
+                        <div>
+                            {% for hashtag in hashtags %}
+                                {%if sca.id is hashtag.sca_id%}
 
-                                <span>#{{hashtag.name}}</span>
+                                    <div class="tag-name">#{{hashtag.name}}</div>
 
-                            {%endif%}
-                        {%endfor%}
+                                {%endif%}
+                            {%endfor%}
+                        </div>
+                        <div style="clear:both;"></div>
                         {% comment %} <p>찜 :
                             {{sca.sca_like}}</p> {% endcomment %}
                     </div>
-                    <p></p>
                 </div>
-                <br></br>
+                <br>
             {%endfor%}
             <p></p>
                         <div style="text-align: center;">
