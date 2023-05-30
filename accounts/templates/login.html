@@ -1,31 +1,40 @@
-
 {% extends "base.html" %}
 {% block contents %}
-        <div class="row mt-5">
-            <div class="col-12 text-center">
-                <h1>로그인</h1>
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+</head>
+<body>
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <br>
+            <h1>SCA CONNECT</h1>
         </div>
-        <div class="row mt-5">
-            <div class="col-12">
-                {{ error }}
-            </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-12">
+            {{ error }}
         </div>
-        <div class="row mt-5">
-            <div class="col-12">
-                <form method="POST" action=".">
-                    {% csrf_token %}
-                    {% for field in form %}
-                    <div class="form-group">
-                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                        <input type="{{ field.field.widget.input_type }}" class="form-control" id="{{ field.id_for_label }}" placeholder="{{ field.label }}" name="{{ field.name }}" />
-                    </div>
-                    {% if field.errors %}
-                    <span style="color: red">{{ field.errors }}</span>
-                    {% endif %}
-                    {% endfor %}
-                    <button type="submit" class="btn text-white" style="background-color:  #734A32;">로그인</button>
-                </form>
-            </div>
+    </div>
+    <div class="row mt-5" style="display: flex; justify-content: center;">
+        <div class="col-6"> 
+            <form method="POST" action=".">
+                {% csrf_token %}
+                {% for field in form %}
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    <input type="{{ field.field.widget.input_type }}" class="form-control" id="{{ field.id_for_label }}" placeholder="{{ field.label }}" name="{{ field.name }}" />
+                </div>
+                {% if field.errors %}
+                <span style="color: red">{{ field.errors }}</span>
+                {% endif %}
+                {% endfor %}
+                <button type="submit" class="btn text-white" style="background-color:#734A32; margin-top:50px; display: block; width: 100%; text-align: center;">로그인</button>
+            </form>
         </div>
+    </div>
+</body>
+</html>
 {% endblock %}

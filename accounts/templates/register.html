@@ -1,21 +1,28 @@
-
 {% extends "base.html" %}
 {% block contents %}
-
-        <div class="row mt-5">
-            <div class="col-12 text-center">
-                <h1>회원가입</h1>
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+</head>
+<body>
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <h1>SCA CONNECT</h1>
+            <h2 style="color: gray;">회원가입</h2>
         </div>
-        <div class="row mt-5">
-            <div class="col-12">
-                {{ error }}
-            </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-12">
+            {{ error }}
         </div>
-        <div class="row mt-5">
-            <div class="col-12">
-                <form method="POST" action=".">
-                    {% csrf_token %}
+    </div>
+    <div class="row" style="display: flex; justify-content: center;">
+        <div class="col-6">
+            <form method="POST" action=".">
+                {% csrf_token %}    
+                <div class="form-group">
                     <div class="mb-3">
                         <label for="username" class="form-label">사용자 이름</label>
                         <input type="text" class="form-control" id="username" placeholder="사용자 이름" name="username">
@@ -32,14 +39,16 @@
                         <label for="re_password" class="form-label">비밀번호</label>
                         <input type="password" class="form-control" id="re_password" placeholder="비밀번호 확인" name="re_password">
                     </div>
-                    <button type="submit" onclick="btn()" class="btn text-white" style="background-color:  #734A32;">가입</button>
-                </form>
-            </div>
-
-            <script>
-                function btn(){
-                    alert('회원가입 완료되었습니다.');
-                }
-            </script>
+                </div>
+                <button type="submit" onclick="btn()" class="btn text-white" style="background-color: #734A32;  margin-top:50px; display: block; width: 100%; text-align: center;">가입</button>
+            </form>
         </div>
-        {% endblock %}
+        <script>
+            function btn(){
+                alert('회원가입 완료되었습니다.');
+            }
+        </script>
+    </div>
+</body>
+</html>
+{% endblock %}
