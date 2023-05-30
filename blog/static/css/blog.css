@@ -12,9 +12,15 @@
 }
 
 .content {
+    text-decoration: none;
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 12pt;
     margin-left: 40px;
+}
+
+.content_container {
+    display: flex; 
+    justify-content: center;
 }
 
 .date {
@@ -43,4 +49,9 @@
 
 .post h1 a, .post h1 a:visited {
     color: #000000;
+    text-decoration: none;
 }
+
+/* .card {
+    margin: 0 auto;
+} */

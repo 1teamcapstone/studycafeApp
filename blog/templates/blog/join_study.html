@@ -1,61 +1,50 @@
 {% extends 'blog/baseone.html' %}
-    {% block content %}
-
-        {% for post in paginated_list %}
-          
-                <div class="post">
-                    <div class="d-grid gap-3">
-                    <div class="card" style="width: 30rem;">
-                        <div class="card-header">
-                            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-                            <h5>글쓴이: {{ post.author }}</h5>
-                        </div>
-                        <div class="card-body">  
-                            <p>장소 | {{ post.study_place|linebreaksbr }}</p>
-                            <p>날짜 | {{ post.study_day|linebreaksbr }}</p>
-                            <p>시간 | {{ post.start_time|linebreaksbr }}~{{ post.end_time|linebreaksbr }}</p>
-                            <p>제한인원 | {{ post.limit_people|linebreaksbr }}</p>
-                            <div class="date">
-                                {{ post.published_date }}
-                            </div>
-                        </div>
-                    </div>
-                    </div>
+{% block content %}
+    <div class="post">
+        <div class="d-grid gap-3">
+            <div class="card" style="width: 50rem;">
+                <div class="card-header" style="background-color:#D9D1C7;">
+                    <h1>토익 공부 
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="badge rounded-pill" style="background-color:#324028;">신청완료</span>
+                    </h1>
+                    <h5>글쓴이: 선아</h5>
                 </div>
-                
-        {% endfor %}
+                <div class="card-body">  
+                    <p>장소 | 가온스터디카페 단국대점</p>
+                    <p>날짜 | 목요일</p>
+                    <p>시간 | 09:00:00~11:00:00</p>
+                    <p>제한인원 | 5</p>
+                    <div class="date">2023년 5월 31일</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="post">
+        <div class="d-grid gap-3">
+            <div class="card" style="width: 50rem;">
+                <div class="card-header" style="background-color:#D9D1C7;">
+                    <h1>일본어 공부
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="badge rounded-pill" style="background-color:#324028;">신청완료</span>
+                    </h1>
+                    <h5>글쓴이: 보란</h5>
+                </div>
+                <div class="card-body">  
+                    <p>장소 | 플랜에이스터디카페 용인수지센터</p>
+                    <p>날짜 | 수요일</p>
+                    <p>시간 | 12:00:00~14:00:00</p>
+                    <p>제한인원 | 4</p>
+                    <div class="date">2023년 5월 31일</div>
+                </div>
+            </div>
+        </div>
+    </div>
     
-
-    <nav aria-label="study_pagination">
-        <ul class="pagination">
-        {% if paginated_list.has_other_pages %}
-        <li class="page-item">
-            
-            {% if paginated_list.has_previous %}
-                <li class = "page-item">
-                    <a class="page-link" href="?page={{ paginated_list.previous_page_number }}" aria-label = "Previous">
-                        <span aria-hidden="true">&laquo;</span></a>
-                </li>
-            {% endif %}
-
-            {% for page in paginator.page_range %}
-            {% if page >= paginated_list.number|add:-5 and page <= paginated_list.number|add:5 %}
-            {% if page == paginated_list.number %}
-            <li class="page-item active" aria-current="page"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
-            {% else %}
-            <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
-            {% endif %}
-            {% endif %}
-            {% endfor %}
-
-            {% if paginated_list.has_next %}
-            <li class = "page-item">
-                <a class="page-link" href="?page={{ paginated_list.next_page_number }}" aria-label = "Next">
-                    <span aria-hidden="true">&raquo;</span></a>
-            </li>
-            {% endif %}
-        </li>   
-        </ul>
-        {% endif %}
-    </nav>
     {% endblock %}
+    
