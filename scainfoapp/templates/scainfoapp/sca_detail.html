@@ -2,139 +2,145 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,
-    initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{{studycafe.name}}</title>
         <link rel="stylesheet" href='/static/css/detail.css'>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     </head>
     <body>
-        <div class="home">
-        <a href="/"><img class="homebtn" src="/static/images/homebtn.png"></img></a></div>
-        
-        <div>
-        <h2 style="text-align: center;">{{studycafe.name}}</h2></div>         
-
-        <div class="container">
-            {% comment %} {% for sca in posts %} {% endcomment %}
-                <div class="card" style=" border: 2px solid #734A32; border-radius:10px;">                    
-                    <div class="card-body">
-                        <div class="imgbox">
-                        <img class="scaimg" src="{{studycafe.sca_image}}"></img>
-                        </div>
-                        <div>
-                            <div class="card-title">
-                                <h3>{{studycafe.name}}</h3>
+        <div class="top-bar"
+            style="position: fixed; top: 0;
+                    left: 0;
+                    width: 100%;
+                    background-color: white;
+                    color: #324028;
+                    padding: 10px;
+                    z-index: 9999;
+                    height: 50px;
+                    border-bottom: 1px solid gainsboro;">
+            <a href="/"><img class="home-btn" src="/static/home-img.png"
+                style="display:block; position: absolute; top: 20px; right: 50px; left: 34px; width: 30px; height: 30px; background-size: cover;"/></a>        
+            <h2 style="margin-left: 80px; margin-top: 5px; font-size: 30px; font-weight: 500; line-height: 1.1;">스터디카페 상세보기</h2>
+        </div>
+        <div class="whatever" style="margin-top: 150px;">
+            <div><h2 style="text-align: center;">{{studycafe.name}}</h2></div>         
+            <div class="container">
+                {% comment %} {% for sca in posts %} {% endcomment %}
+                    <div class="card" style=" border: 2px solid #734A32; border-radius:10px;">                    
+                        <div class="card-body">
+                            <div class="imgbox">
+                            <img class="scaimg" src="{{studycafe.sca_image}}"></img>
                             </div>
-
-                            <div class="like">
-                                <form method='post' action=''>
-                                    {% csrf_token %}
-                                    <input type="hidden" name="like_button" value="{{studycafe.id}}">
-                                    <span><button id="likebtn" style="border:none; background-color:transparent;"
-                                        type="submit" onclick="btn()">
-                                        <img class="heartbtn" src="/static/image/heart.png" style="width:30px; height:30px;
-                                        margin-top:21px;"></img></button></span>
-                                </form>
+                            <div>
+                                <div class="card-title">
+                                    <h3>{{studycafe.name}}</h3>
+                                </div>
+    
+                                <div class="like">
+                                    <form method='post' action=''>
+                                        {% csrf_token %}
+                                        <input type="hidden" name="like_button" value="{{studycafe.id}}">
+                                        <span><button id="likebtn" style="border:none; background-color:transparent;"
+                                            type="submit" onclick="btn()">
+                                            <img class="heartbtn" src="/static/image/heart.png" style="width:30px; height:30px;
+                                            margin-top:21px;"></img></button></span>
+                                    </form>
+                                    <div style="clear:both;"></div>
+                                </div>
+    
                                 <div style="clear:both;"></div>
-                            </div>
-
+                            </div>  
+                            <img class="locationbtn" src="/static/image/location.png" style="float: left;"></img>
+    
+                            <p style="float: left; margin-top:0;">&nbsp;&nbsp;{{studycafe.address}} </p>
+                            
                             <div style="clear:both;"></div>
-                        </div>  
-                        <img class="locationbtn" src="/static/image/location.png" style="float: left;"></img>
-
-                        <p style="float: left; margin-top:0;">&nbsp;&nbsp;{{studycafe.address}} </p>
-                        
-                        <div style="clear:both;"></div>
-                        {% comment %} {%load mathfilters%} {% endcomment %}
-                        <div class="star-ratings">
-                            {%load mathfilters%}
-                            <div class="star-ratings">    
-                                <div class="star-ratings-fill" style="width:{{studycafe.star_rating|mul:20}}%">
-                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                                </div>
-                                <div class="star-ratings-base">
-                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                            {% comment %} {%load mathfilters%} {% endcomment %}
+                            <div class="star-ratings">
+                                {%load mathfilters%}
+                                <div class="star-ratings">    
+                                    <div class="star-ratings-fill" style="width:{{studycafe.star_rating|mul:20}}%">
+                                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                    </div>
+                                    <div class="star-ratings-base">
+                                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div style="float: left;">
-                            <p style="margin: auto; margin-bottom: 13px;">&nbsp;&nbsp;카카오맵 리뷰({{studycafe.review}}) </p>
-                        </div>    
-
-                        <div style="clear:both;"></div>
-
-                        
-                        
-                        <div class="btns">
-                            <div class="rbtn">
-                                <button onclick="location.href='/review/list/{{studycafe.id}}'"style="background-color:#D9D1C7; 
-                                width: 260px; height: 45px; border: 2px solid #D9D1C7; border-radius:10px;">scaconnect 사용자 리뷰 보기</button >
-                            </div> 
-                            <div class="wbtn">                        
-                                <button onclick="location.href='/review/write/{{studycafe.id}}'" style="background-color:#D9D1C7; 
-                                width: 120px; height: 45px; border: 2px solid #D9D1C7; border-radius:10px;" >리뷰 쓰기</button >
+                            <div style="float: left;">
+                                <p style="margin: auto; margin-bottom: 13px;">&nbsp;&nbsp;카카오맵 리뷰({{studycafe.review}}) </p>
+                            </div>    
+    
+                            <div style="clear:both;"></div>
+    
+                            
+                            
+                            <div class="btns">
+                                <div class="rbtn">
+                                    <button onclick="location.href='/review/list/{{studycafe.id}}'"style="background-color:#D9D1C7; 
+                                    width: 260px; height: 45px; border: 2px solid #D9D1C7; border-radius:10px;">scaconnect 사용자 리뷰 보기</button >
+                                </div> 
+                                <div class="wbtn">                        
+                                    <button onclick="location.href='/review/write/{{studycafe.id}}'" style="background-color:#D9D1C7; 
+                                    width: 120px; height: 45px; border: 2px solid #D9D1C7; border-radius:10px;" >리뷰 쓰기</button >
+                                </div>
+                                 
                             </div>
-                             
+                            <div style="clear:both;"></div>
+                                    <div class="sbtn">
+                                    <button onclick="location.href='/blog/sort/{{studycafe.id}}'" style="background-color:#734A32; 
+                                    width: 130px; height: 45px; border: 2px solid #734A32; border-radius:10px; color:white;">스터디 현황</button >
+                                </div>                        
+                            <hr>
+                            
+                            
+                            <img class="reviewbtn" src="/static/image/feature.png" style="float: left;">
+                            <h4 style="float: left; margin-top:0;">&nbsp;&nbsp;주요 시설</h4>
+                            
+                            <div style="clear:both;"></div>
+    
+    
+                            <div>
+                            {% for hashtag in hashtags %}
+                                {%if studycafe.id is hashtag.sca_id%}
+                                    <div class="tag-img"><img src="{{hashtag.icon}}" style="width: 70px; height:70px; margin-left:20px;"></div>
+                                    
+                                {%endif%}
+                            {%endfor%}
+                            <div style="clear:both;"></div>
+                            {% for hashtag in hashtags %}
+                                {%if studycafe.id is hashtag.sca_id%}
+                                    <div class="tag-name"># {{hashtag.name}}</div>
+                                    
+                                {%endif%}
+                            {%endfor%}
+                            </div>
+                            <div style="clear:both;"></div>
+    
+                            <div style="margin-top: 35px;">
+                                <img class="timebtn" src="/static/image/time.png" style="float: left;"></img>
+                                <p style="float: left; margin-top:0;">&nbsp;&nbsp;&nbsp;&nbsp;{{studycafe.time}}</p>
+                            </div>
+                            <div style="clear:both;"></div>
+                            <div style="margin-top: 10px;">
+                                <img class="phonebtn" src="/static/image/phone.png" style="float: left;"></img>
+                                <p style="float: left; margin-top:0;">&nbsp;&nbsp;&nbsp;&nbsp;{{studycafe.phone_number}}</p>
+                            </div>
+                            <div style="clear:both;"></div>
+                            <div style="margin-top: 10px;">
+                                <img class="mapbtn" src="/static/image/map.png" style="float: left;"></img>    
+                                <p style="font-weight: bold; float: left; margin-top:0; margin-bottom:0;">                        
+                                <a onclick="location.href='/scamap/{{studycafe.id}}/'">&nbsp;&nbsp;&nbsp;스터디카페 위치 확인</a></p>
+                            </div>
+                            <div style="clear:both;"></div>
                         </div>
-                        <div style="clear:both;"></div>
-                                <div class="sbtn">
-                                <button onclick="location.href='/blog/sort/{{studycafe.id}}'" style="background-color:#734A32; 
-                                width: 130px; height: 45px; border: 2px solid #734A32; border-radius:10px; color:white;">스터디 현황</button >
-                            </div>                        
-                        <hr>
-                        
-                        
-                        <img class="reviewbtn" src="/static/image/feature.png" style="float: left;">
-                        <h4 style="float: left; margin-top:0;">&nbsp;&nbsp;주요 시설</h4>
-                        
-                        <div style="clear:both;"></div>
-
-
-                        <div>
-                        {% for hashtag in hashtags %}
-                            {%if studycafe.id is hashtag.sca_id%}
-                                <div class="tag-img"><img src="{{hashtag.icon}}" style="width: 70px; height:70px; margin-left:20px;"></div>
-                                
-                            {%endif%}
-                        {%endfor%}
-                        <div style="clear:both;"></div>
-                        {% for hashtag in hashtags %}
-                            {%if studycafe.id is hashtag.sca_id%}
-                                <div class="tag-name"># {{hashtag.name}}</div>
-                                
-                            {%endif%}
-                        {%endfor%}
-                        </div>
-                        <div style="clear:both;"></div>
-
-                        <div style="margin-top: 35px;">
-                            <img class="timebtn" src="/static/image/time.png" style="float: left;"></img>
-                            <p style="float: left; margin-top:0;">&nbsp;&nbsp;&nbsp;&nbsp;{{studycafe.time}}</p>
-                        </div>
-                        <div style="clear:both;"></div>
-                        <div style="margin-top: 10px;">
-                            <img class="phonebtn" src="/static/image/phone.png" style="float: left;"></img>
-                            <p style="float: left; margin-top:0;">&nbsp;&nbsp;&nbsp;&nbsp;{{studycafe.phone_number}}</p>
-                        </div>
-                        <div style="clear:both;"></div>
-                        <div style="margin-top: 10px;">
-                            <img class="mapbtn" src="/static/image/map.png" style="float: left;"></img>    
-                            <p style="font-weight: bold; float: left; margin-top:0; margin-bottom:0;">                        
-                            <a onclick="location.href='/scamap/{{studycafe.id}}/'">&nbsp;&nbsp;&nbsp;스터디카페 위치 확인</a></p>
-                        </div>
-                        <div style="clear:both;"></div>
                     </div>
-                </div>
             </div>
-                <br>
-            <script>
+            <br>
+        </div>
+        <script>
                 function btn(){
                     alert("찜 완료");}
-            </script>
-             
-            
-                </body>
-
-
-            </html>
+        </script>
+    </body>
+</html>

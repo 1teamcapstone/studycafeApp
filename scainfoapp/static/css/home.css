@@ -4,18 +4,7 @@
   font-family: 'Noto Sans KR', sans-serif;
 }
 
-.homebtn{
-  width: 40px;
-  /* height: 30px; */
-}
-
-.home{
-  width: 650px;
-  margin: auto;
-  margin-bottom: 0;
-}
-
-h2 { text-align: center; }
+/* h2 { text-align: center; } */
 
 .mapview{  
   width: 650px;
