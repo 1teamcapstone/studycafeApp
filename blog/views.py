@@ -28,6 +28,23 @@ def post_list(request):
     
     return render(request, 'blog/post_list.html', {'posts': posts, 'paginated_list': paginated_list, 'paginator': paginator})
 
+def join_study(request): 
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    # 추가한 부분
+    page = request.GET.get('page')
+    paginator = Paginator(posts, 3)
+    
+    try:
+        paginated_list = paginator.get_page(page)
+    except PageNotAnInteger:
+        page = 1
+        paginated_list = paginator.get_page(page)
+    except EmptyPage:
+        page = paginator.num_pages
+        paginated_list = paginator.get_page(page)
+    
+    return render(request, 'blog/join_study.html', {'posts': posts, 'paginated_list': paginated_list, 'paginator': paginator})
+
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})
