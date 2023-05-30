@@ -60,12 +60,12 @@ def post_new(request):
         form = PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})
 
+
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
     user_id = request.session.get('user')
     user = User.objects.get(pk = user_id)
-    
-    if user != post.author:
+    if user != post.author: 
         messages.error(request, '수정권한이 없습니다.')
         return redirect('post_detail', pk=post.pk)
     
@@ -79,23 +79,6 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
-
-""" def post_edit(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    if request.method == "POST":
-        form = PostForm(request.POST, instance=post)
-
-        if form.is_valid():
-            user_id = request.session.get('user') # 추가
-            user = User.objects.get(pk = user_id)   # 추가
-            post = form.save(commit=False)
-            post.author = request.user
-            post.published_date = timezone.now()
-            post.save()
-            return redirect('post_detail', pk=post.pk)
-    else:
-        form = PostForm(instance=post)
-    return render(request, 'blog/post_edit.html', {'form': form}) """
 
 
 def study_view(request,pk):        

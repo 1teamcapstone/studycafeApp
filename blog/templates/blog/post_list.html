@@ -2,15 +2,22 @@
     {% block content %}
         {% for post in paginated_list %}
             <div class="post">
-                <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-                <h5>글쓴이: {{ post.author }}</h5>
-                <hr>
-                <p>장소 | {{ post.study_place|linebreaksbr }}</p>
-                <p>날짜 | {{ post.study_day|linebreaksbr }}</p>
-                <p>시간 | {{ post.start_time|linebreaksbr }}~{{ post.end_time|linebreaksbr }}</p>
-                <p>제한인원 | {{ post.limit_people|linebreaksbr }}</p>
-                <div class="date">
-                    {{ post.published_date }}
+                <div class="d-grid gap-3">
+                <div class="card" style="width: 30rem;">
+                    <div class="card-header">
+                        <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+                        <h5>글쓴이: {{ post.author }}</h5>
+                    </div>
+                    <div class="card-body">  
+                        <p>장소 | {{ post.study_place|linebreaksbr }}</p>
+                        <p>날짜 | {{ post.study_day|linebreaksbr }}</p>
+                        <p>시간 | {{ post.start_time|linebreaksbr }}~{{ post.end_time|linebreaksbr }}</p>
+                        <p>제한인원 | {{ post.limit_people|linebreaksbr }}</p>
+                        <div class="date">
+                            {{ post.published_date }}
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
         {% endfor %}
