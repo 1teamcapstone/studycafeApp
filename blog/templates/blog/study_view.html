@@ -2,7 +2,12 @@
     {% block content %}
         {% for post in study %}
             <div class="post">
-                <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+                <div class="d-grid gap-3">
+                    <div class="card" style="width: 50rem;">
+                        <div class="card-header" style="background-color:#D9D1C7;">
+                        <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+                        </div>
+            <div class="card-body"> 
                 <p>장소 | {{ post.study_place|linebreaksbr }}</p>
                 <p>날짜 | {{ post.study_day|linebreaksbr }}</p>
                 <p>시간 | {{ post.start_time|linebreaksbr }}~{{ post.end_time|linebreaksbr }}</p>
@@ -11,6 +16,9 @@
                     {{ post.published_date }}
                 </div>
             </div>
-        {% endfor %}
+        </div>
+    </div>
+</div>
+    {% endfor %}
 
     {% endblock %}
